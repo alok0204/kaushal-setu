@@ -10,6 +10,8 @@ import {
   QuizAttempt,
   UserDashboardData,
   IGOTResourceItem,
+  UploadedMaterial,
+  AIFeedbackResult,
 } from "@/types";
 import {
   DEMO_USERS,
@@ -26,6 +28,7 @@ export interface UserPersistedState {
   learningProgress: Record<string, LearningProgressItem>; // key: resourceId
   quizzes: GeneratedQuiz[];
   quizAttempts: QuizAttempt[];
+  uploadedMaterials?: UploadedMaterial[];
 }
 
 const STORAGE_KEY_PREFIX = "kaushal_setu_user_v1_";
@@ -56,6 +59,7 @@ export function getInitialUserState(userId: string): UserPersistedState {
     learningProgress: {},
     quizzes: [],
     quizAttempts: [],
+    uploadedMaterials: [],
   };
 }
 
@@ -199,6 +203,8 @@ export function getDashboardData(userId: string): UserDashboardData {
     recentQuizAttempt,
     recommendedResources: recommended,
     isEstablished: true,
+    uploadedMaterials: state.uploadedMaterials || [],
+    quizHistory: state.quizAttempts || [],
   };
 }
 
@@ -287,6 +293,18 @@ export function setResourceProgress(
   saveUserState(state);
 }
 
+export function saveUploadedMaterial(userId: string, material: UploadedMaterial): void {
+  const state = getUserState(userId);
+  if (!state.uploadedMaterials) state.uploadedMaterials = [];
+  state.uploadedMaterials.unshift(material);
+  saveUserState(state);
+}
+
+export function getUploadedMaterials(userId: string): UploadedMaterial[] {
+  const state = getUserState(userId);
+  return state.uploadedMaterials || [];
+}
+
 export function saveGeneratedQuiz(userId: string, quiz: GeneratedQuiz): void {
   const state = getUserState(userId);
   if (!state.quizzes) state.quizzes = [];
@@ -294,33 +312,46 @@ export function saveGeneratedQuiz(userId: string, quiz: GeneratedQuiz): void {
   saveUserState(state);
 }
 
+export function getQuizById(userId: string, quizId: string): GeneratedQuiz | undefined {
+  const state = getUserState(userId);
+  return state.quizzes?.find((q) => q.id === quizId);
+}
+
+export function getQuizAttemptById(userId: string, attemptId: string): QuizAttempt | undefined {
+  const state = getUserState(userId);
+  return state.quizAttempts?.find((a) => a.id === attemptId);
+}
+
+export function getLatestQuizAttempt(userId: string, quizId?: string): QuizAttempt | undefined {
+  const state = getUserState(userId);
+  if (!state.quizAttempts || state.quizAttempts.length === 0) return undefined;
+  if (quizId) {
+    const matched = state.quizAttempts.filter((a) => a.quizId === quizId);
+    if (matched.length > 0) return matched[matched.length - 1];
+  }
+  return state.quizAttempts[state.quizAttempts.length - 1];
+}
+
 export function submitQuizAttempt(
   userId: string,
   quizId: string,
   quizTitle: string,
   competencyId: CompetencyId,
-  answers: { questionId: string; selectedAnswer: number; isCorrect: boolean }[]
+  answers: {
+    questionId: string;
+    selectedAnswer: number;
+    isCorrect: boolean;
+    competencyId?: CompetencyId;
+    questionText?: string;
+    explanation?: string;
+  }[],
+  timeDurationSeconds?: number,
+  feedback?: AIFeedbackResult
 ): QuizAttempt {
   const state = getUserState(userId);
   const totalQuestions = answers.length;
   const correctCount = answers.filter((a) => a.isCorrect).length;
   const quizScore = totalQuestions > 0 ? Math.round((correctCount / totalQuestions) * 100) : 0;
-
-  const attempt: QuizAttempt = {
-    id: `att_${Date.now()}`,
-    quizId,
-    userId,
-    quizTitle,
-    score: quizScore,
-    totalQuestions,
-    correctCount,
-    completedAt: new Date().toISOString(),
-    competencyId,
-    answers,
-  };
-
-  if (!state.quizAttempts) state.quizAttempts = [];
-  state.quizAttempts.push(attempt);
 
   // ==============================================================================
   // STEP 13 FORMULA:
@@ -338,6 +369,27 @@ export function submitQuizAttempt(
   // Ensure bounded within 0-100
   state.competencies[competencyId] = Math.max(0, Math.min(100, newCompScore));
   state.isEstablished = true;
+
+  const snapshotCompetencyScores = { ...state.competencies };
+
+  const attempt: QuizAttempt = {
+    id: `att_${Date.now()}`,
+    quizId,
+    userId,
+    quizTitle,
+    score: quizScore,
+    totalQuestions,
+    correctCount,
+    completedAt: new Date().toISOString(),
+    competencyId,
+    competencyScores: snapshotCompetencyScores,
+    timeDurationSeconds: timeDurationSeconds || 540,
+    feedback,
+    answers,
+  };
+
+  if (!state.quizAttempts) state.quizAttempts = [];
+  state.quizAttempts.push(attempt);
 
   saveUserState(state);
   return attempt;

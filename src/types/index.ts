@@ -81,24 +81,46 @@ export interface LearningProgressItem {
   updatedAt: string;
 }
 
+export interface UploadedMaterial {
+  id: string;
+  userId: string;
+  fileName: string;
+  storagePath?: string;
+  fileSize?: string;
+  status: "uploaded" | "processing" | "completed" | "failed";
+  createdAt: string;
+}
+
 export interface QuizQuestionItem {
   id: string;
   question: string;
   options: string[];
-  correctAnswer: number;
+  correctAnswer: number; // 0-indexed
   explanation: string;
   competencyId: CompetencyId;
   difficulty: string;
+  reference?: string;
 }
 
 export interface GeneratedQuiz {
   id: string;
   userId: string;
   title: string;
+  uploadedMaterialId?: string;
   materialFilename: string;
-  createdAt: string;
+  totalQuestions: number;
   targetCompetencyId: CompetencyId;
+  secondaryCompetencyId?: CompetencyId;
+  createdAt: string;
   questions: QuizQuestionItem[];
+}
+
+export interface AIFeedbackResult {
+  strengths: string;
+  areasToImprove: string;
+  recommendedAction: string;
+  prescribedModule: string;
+  prescribedDuration: string;
 }
 
 export interface QuizAttempt {
@@ -111,7 +133,17 @@ export interface QuizAttempt {
   correctCount: number;
   completedAt: string;
   competencyId: CompetencyId;
-  answers: { questionId: string; selectedAnswer: number; isCorrect: boolean }[];
+  competencyScores: Record<CompetencyId, number>;
+  timeDurationSeconds?: number;
+  feedback?: AIFeedbackResult;
+  answers: {
+    questionId: string;
+    selectedAnswer: number;
+    isCorrect: boolean;
+    competencyId?: CompetencyId;
+    questionText?: string;
+    explanation?: string;
+  }[];
 }
 
 export interface UserDashboardData {
@@ -129,4 +161,6 @@ export interface UserDashboardData {
   recentQuizAttempt: QuizAttempt | null;
   recommendedResources: IGOTResourceItem[];
   isEstablished: boolean; // false if 0 assessments
+  uploadedMaterials?: UploadedMaterial[];
+  quizHistory?: QuizAttempt[];
 }

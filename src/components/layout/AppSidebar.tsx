@@ -71,7 +71,13 @@ export function AppSidebar({ className, onResetData }: AppSidebarProps) {
           </div>
           <nav className="mt-3 space-y-1">
             {navItems.map((item) => {
-              const isActive = pathname === item.href;
+              const isActive =
+                item.href === "/assessment"
+                  ? pathname.startsWith("/assessment") ||
+                    pathname.startsWith("/ai-generator") ||
+                    pathname.startsWith("/quiz")
+                  : pathname === item.href ||
+                    (item.href !== "/" && pathname.startsWith(item.href));
               const Icon = item.icon;
               return (
                 <Link

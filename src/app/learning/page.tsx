@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import {
   ExternalLink,
   Sparkles,
@@ -86,6 +87,7 @@ export default function LearningPage() {
           title: data.title || "AI Evaluation: Statistical Competency",
           materialFilename: selectedFile ? selectedFile.name : `${customTitle}.pdf`,
           createdAt: new Date().toISOString(),
+          totalQuestions: data.questions.length,
           targetCompetencyId: targetCompId,
           questions: data.questions.map(
             (q: ApiQuestionResponse, idx: number): QuizQuestionItem => ({
@@ -102,7 +104,7 @@ export default function LearningPage() {
 
         saveGeneratedQuiz(userId, newQuiz);
         setTimeout(() => {
-          router.push(`/quiz?id=${newQuiz.id}`);
+          router.push(`/quiz/${newQuiz.id}`);
         }, 600);
       } else {
         setUploadStatus("Failed to generate quiz. Please retry.");
@@ -474,6 +476,14 @@ export default function LearningPage() {
                         {uploading ? "Analyzing Material & Generating MCQs..." : "Generate AI Assessment & Start Quiz"}
                         <ArrowRight className="h-4 w-4" />
                       </button>
+
+                      <Link
+                        href="/ai-generator"
+                        className="flex w-full items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white py-2.5 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition-colors"
+                      >
+                        <Sparkles className="h-3.5 w-3.5 text-[#0b2945]" />
+                        Open AI Assessment Generator Studio
+                      </Link>
                     </div>
 
                     <div className="text-[11px] text-slate-500 flex items-center gap-1.5">

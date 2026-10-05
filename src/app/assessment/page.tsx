@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import {
   ClipboardCheck,
   CheckCircle2,
@@ -10,6 +11,7 @@ import {
   Clock,
   ShieldCheck,
   Check,
+  Sparkles,
 } from "lucide-react";
 import { AppShell } from "@/components/layout/AppShell";
 import { UserDashboardData, CompetencyId } from "@/types";
@@ -165,6 +167,23 @@ export default function AssessmentPage() {
                   Answered: {answeredCount}/{questions.length}
                 </span>
               </div>
+            </div>
+
+            {/* Switcher Banner */}
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 rounded-xl border border-blue-200 bg-blue-50/70 p-3.5 shadow-2xs">
+              <div className="flex items-center gap-2.5 text-xs">
+                <Sparkles className="h-4 w-4 text-[#0b2945] shrink-0" />
+                <div>
+                  <span className="font-bold text-[#0f1f35]">Looking to generate custom assessments from official PDFs? </span>
+                  <span className="text-slate-500">Upload cadre manuals or survey guides.</span>
+                </div>
+              </div>
+              <Link
+                href="/ai-generator"
+                className="inline-flex items-center gap-1.5 rounded-lg bg-[#0b2945] px-3.5 py-1.5 text-xs font-bold text-white hover:bg-[#081f35] transition-colors shrink-0"
+              >
+                AI Assessment Generator <ArrowRight className="h-3 w-3" />
+              </Link>
             </div>
 
             {/* Question Progress Stepper */}
