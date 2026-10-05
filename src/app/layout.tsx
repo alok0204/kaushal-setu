@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { ThemeProvider } from "@/context/ThemeContext";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -27,7 +28,6 @@ export const metadata: Metadata = {
   ],
 };
 
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -36,7 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} min-h-full flex flex-col bg-[#f8fafd] text-[#0f1f35] font-sans antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} min-h-full flex flex-col bg-[#f8fafd] text-[#0f1f35] font-sans antialiased dark:bg-[#0A0A0B] dark:text-[#F5F5F5]`}
         suppressHydrationWarning
       >
         <script
@@ -44,6 +44,14 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
+                try {
+                  var storedTheme = localStorage.getItem('kaushal_setu_theme');
+                  if (storedTheme === 'dark' || (!storedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                    document.documentElement.classList.add('dark');
+                  } else {
+                    document.documentElement.classList.remove('dark');
+                  }
+                } catch (e) {}
                 function fixDefiner() {
                   try {
                     var el = document.getElementById('definer-bubble-host');
@@ -65,7 +73,9 @@ export default function RootLayout({
             `,
           }}
         />
-        {children}
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

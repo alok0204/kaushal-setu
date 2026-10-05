@@ -47,32 +47,32 @@ export default function DashboardPage() {
         const weakestCompDef = COMPETENCIES.find((c) => c.id === weakestComp?.competencyId);
 
         return (
-          <div className="space-y-8 text-[#0f1f35]" suppressHydrationWarning>
+          <div className="space-y-8 text-[#0f1f35] dark:text-[#F5F5F5]" suppressHydrationWarning>
             {/* Top Directorate Banner */}
             <div>
               <div className="flex flex-wrap items-center justify-between gap-4">
                 <div>
-                  <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-[#0b2945]">
-                    <span className="h-2 w-2 rounded-full bg-[#0b2945]" />
+                  <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-[#0b2945] dark:text-blue-400">
+                    <span className="h-2 w-2 rounded-full bg-[#0b2945] dark:bg-blue-400" />
                     National Statistical Systems Capacity Directorate
                   </div>
-                  <h1 className="mt-1 text-2xl font-extrabold text-[#0f1f35] sm:text-3xl">
+                  <h1 className="mt-1 text-2xl font-extrabold text-[#0f1f35] dark:text-[#F5F5F5] sm:text-3xl">
                     Good morning, {user.fullName.split(" ")[0]}
                   </h1>
-                  <p className="mt-0.5 text-xs text-slate-500">
+                  <p className="mt-0.5 text-xs text-slate-500 dark:text-[#A1A1AA]">
                     Your personalized competency and learning overview benchmarked against MoSPI guidelines.
                   </p>
                 </div>
 
                 {/* Right Metadata Badges */}
                 <div className="flex flex-wrap items-center gap-2 text-xs">
-                  <span className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 font-medium text-slate-700 shadow-xs">
-                    Role: <strong className="text-[#0f1f35]">{user.role}</strong>
+                  <span className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 font-medium text-slate-700 shadow-xs dark:border-[#2A2A2E] dark:bg-[#171719] dark:text-[#D4D4D8]">
+                    Role: <strong className="text-[#0f1f35] dark:text-[#F5F5F5]">{user.role}</strong>
                   </span>
-                  <span className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 font-medium text-slate-700 shadow-xs">
+                  <span className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 font-medium text-slate-700 shadow-xs dark:border-[#2A2A2E] dark:bg-[#171719] dark:text-[#D4D4D8]">
                     System: <strong>Official Statistical System (MoSPI/DES)</strong>
                   </span>
-                  <span className="rounded-lg border border-blue-200 bg-blue-50/80 px-3 py-1.5 font-medium text-blue-900 shadow-xs">
+                  <span className="rounded-lg border border-blue-200 bg-blue-50/80 px-3 py-1.5 font-medium text-blue-900 shadow-xs dark:border-blue-900/50 dark:bg-blue-950/30 dark:text-blue-300">
                     State: <strong>{user.stateName} ({user.stateCode})</strong>
                   </span>
                 </div>
@@ -81,20 +81,20 @@ export default function DashboardPage() {
 
             {/* Zero State Alert Banner if not established */}
             {!isEstablished && (
-              <div className="rounded-2xl border border-amber-300 bg-amber-50/90 p-6 shadow-xs">
+              <div className="rounded-2xl border border-amber-300 bg-amber-50/90 p-6 shadow-xs dark:border-amber-800/60 dark:bg-amber-950/25">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <div className="space-y-1">
-                    <div className="flex items-center gap-2 text-sm font-bold text-amber-900">
-                      <AlertTriangle className="h-5 w-5 text-amber-600" />
+                    <div className="flex items-center gap-2 text-sm font-bold text-amber-900 dark:text-amber-200">
+                      <AlertTriangle className="h-5 w-5 text-amber-600 dark:text-amber-400" />
                       Competency Profile: Not Established
                     </div>
-                    <p className="text-xs text-amber-800">
+                    <p className="text-xs text-amber-800 dark:text-amber-300">
                       Complete your initial assessment to identify your statistical competency gaps and unlock personalized iGOT learning recommendations.
                     </p>
                   </div>
                   <Link
                     href="/assessment"
-                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-amber-700 px-5 py-2.5 text-xs font-bold text-white shadow-xs hover:bg-amber-800 transition-colors shrink-0"
+                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-amber-700 px-5 py-2.5 text-xs font-bold text-white shadow-xs hover:bg-amber-800 dark:bg-amber-600 dark:hover:bg-amber-500 transition-colors shrink-0"
                   >
                     Start Initial Assessment
                     <ArrowRight className="h-4 w-4" />
@@ -106,25 +106,25 @@ export default function DashboardPage() {
             {/* 4 Metric Cards Row */}
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {/* Card 1: Overall Competency */}
-              <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-xs">
+              <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-xs dark:border-[#2A2A2E] dark:bg-[#171719]">
                 <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">
+                  <span className="text-[11px] font-bold text-slate-500 dark:text-[#A1A1AA] uppercase tracking-wider">
                     Overall Competency
                   </span>
-                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-50 text-[#0b2945]">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-50 text-[#0b2945] dark:bg-blue-950/40 dark:text-blue-300">
                     <Trophy className="h-4 w-4" />
                   </div>
                 </div>
                 <div className="mt-3 flex items-baseline gap-2">
-                  <span className="text-3xl font-extrabold text-[#0f1f35]">
+                  <span className="text-3xl font-extrabold text-[#0f1f35] dark:text-[#F5F5F5]">
                     {overallCompetency}%
                   </span>
                   {isEstablished ? (
                     <span
                       className={`text-xs font-semibold px-2 py-0.5 rounded-full ${
                         overallCompetency >= 70
-                          ? "bg-emerald-50 text-emerald-800 border border-emerald-200"
-                          : "bg-amber-50 text-amber-800 border border-amber-200"
+                          ? "bg-emerald-50 text-emerald-800 border border-emerald-200 dark:bg-emerald-950/30 dark:text-emerald-300 dark:border-emerald-800/50"
+                          : "bg-amber-50 text-amber-800 border border-amber-200 dark:bg-amber-950/30 dark:text-amber-300 dark:border-amber-800/50"
                       }`}
                     >
                       {overallCompetency >= 70
@@ -132,84 +132,84 @@ export default function DashboardPage() {
                         : `${overallCompetency - 70}% deficit`}
                     </span>
                   ) : (
-                    <span className="text-xs text-slate-400 font-medium">pending</span>
+                    <span className="text-xs text-slate-400 dark:text-[#71717A] font-medium">pending</span>
                   )}
                 </div>
-                <div className="mt-2 text-[11px] text-slate-500">
+                <div className="mt-2 text-[11px] text-slate-500 dark:text-[#A1A1AA]">
                   MoSPI Benchmark: <strong>70%</strong>
                 </div>
               </div>
 
               {/* Card 2: Learning Progress */}
-              <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-xs">
+              <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-xs dark:border-[#2A2A2E] dark:bg-[#171719]">
                 <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">
+                  <span className="text-[11px] font-bold text-slate-500 dark:text-[#A1A1AA] uppercase tracking-wider">
                     Learning Progress
                   </span>
-                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-purple-50 text-purple-700">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-purple-50 text-purple-700 dark:bg-purple-950/40 dark:text-purple-300">
                     <BookOpen className="h-4 w-4" />
                   </div>
                 </div>
                 <div className="mt-3 flex items-baseline gap-2">
-                  <span className="text-3xl font-extrabold text-[#0f1f35]">
+                  <span className="text-3xl font-extrabold text-[#0f1f35] dark:text-[#F5F5F5]">
                     {learningProgressPercent}%
                   </span>
-                  <span className="text-xs text-slate-500">
+                  <span className="text-xs text-slate-500 dark:text-[#A1A1AA]">
                     {completedModulesCount} of {totalModulesCount} modules
                   </span>
                 </div>
-                <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-slate-100">
+                <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-slate-100 dark:bg-[#2A2A2E]">
                   <div
-                    className="h-full bg-[#0b2945] transition-all duration-500"
+                    className="h-full bg-[#0b2945] dark:bg-blue-500 transition-all duration-500"
                     style={{ width: `${learningProgressPercent}%` }}
                   />
                 </div>
               </div>
 
               {/* Card 3: Assessments */}
-              <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-xs">
+              <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-xs dark:border-[#2A2A2E] dark:bg-[#171719]">
                 <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">
+                  <span className="text-[11px] font-bold text-slate-500 dark:text-[#A1A1AA] uppercase tracking-wider">
                     Assessments
                   </span>
-                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-50 text-emerald-700">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300">
                     <ClipboardCheck className="h-4 w-4" />
                   </div>
                 </div>
                 <div className="mt-3 flex items-baseline gap-2">
-                  <span className="text-3xl font-extrabold text-[#0f1f35]">
+                  <span className="text-3xl font-extrabold text-[#0f1f35] dark:text-[#F5F5F5]">
                     {assessmentsCount}
                   </span>
-                  <span className="text-xs text-slate-500">
+                  <span className="text-xs text-slate-500 dark:text-[#A1A1AA]">
                     {assessmentsCount > 0 ? "verified evaluations" : "none taken yet"}
                   </span>
                 </div>
-                <div className="mt-2 text-[11px] text-slate-500">
+                <div className="mt-2 text-[11px] text-slate-500 dark:text-[#A1A1AA]">
                   Cadre Status: <strong>{isEstablished ? "Evaluated Pool" : "Not Evaluated"}</strong>
                 </div>
               </div>
 
               {/* Card 4: Competency Gaps */}
-              <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-xs">
+              <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-xs dark:border-[#2A2A2E] dark:bg-[#171719]">
                 <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">
+                  <span className="text-[11px] font-bold text-slate-500 dark:text-[#A1A1AA] uppercase tracking-wider">
                     Competency Gaps
                   </span>
-                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-red-50 text-red-600">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-red-50 text-red-600 dark:bg-red-950/40 dark:text-red-300">
                     <AlertTriangle className="h-4 w-4" />
                   </div>
                 </div>
                 <div className="mt-3 flex items-baseline gap-2">
-                  <span className="text-3xl font-extrabold text-[#0f1f35]">
+                  <span className="text-3xl font-extrabold text-[#0f1f35] dark:text-[#F5F5F5]">
                     {isEstablished ? gapsCount : 0}
                   </span>
                   {priorityGap && (
-                    <span className="rounded-full bg-red-50 px-2 py-0.5 text-xs font-semibold text-red-700 border border-red-200">
+                    <span className="rounded-full bg-red-50 px-2 py-0.5 text-xs font-semibold text-red-700 border border-red-200 dark:bg-red-950/40 dark:text-red-300 dark:border-red-800/50">
                       1 high priority
                     </span>
                   )}
                 </div>
-                <div className="mt-2 text-[11px] text-slate-500">
+                <div className="mt-2 text-[11px] text-slate-500 dark:text-[#A1A1AA]">
                   Target Closure: <strong>18 Days Remaining</strong>
                 </div>
               </div>
@@ -218,25 +218,25 @@ export default function DashboardPage() {
             {/* Main Middle Section: 2 Columns */}
             <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
               {/* Left Column (8 cols): Competency Overview */}
-              <div className="lg:col-span-8 rounded-xl border border-slate-200 bg-white p-6 shadow-xs space-y-6">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-4">
+              <div className="lg:col-span-8 rounded-xl border border-slate-200 bg-white p-6 shadow-xs space-y-6 dark:border-[#2A2A2E] dark:bg-[#171719]">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 dark:border-[#2A2A2E] pb-4">
                   <div>
-                    <h2 className="text-lg font-bold text-[#0f1f35]">
+                    <h2 className="text-lg font-bold text-[#0f1f35] dark:text-[#F5F5F5]">
                       Competency Overview
                     </h2>
-                    <p className="text-xs text-slate-500">
+                    <p className="text-xs text-slate-500 dark:text-[#A1A1AA]">
                       Benchmark comparison against Statistical Officer national standard (70% threshold)
                     </p>
                   </div>
-                  <span className="inline-flex items-center gap-1 rounded-md bg-slate-50 border border-slate-200 px-2.5 py-1 text-xs font-semibold text-slate-700">
+                  <span className="inline-flex items-center gap-1 rounded-md bg-slate-50 border border-slate-200 px-2.5 py-1 text-xs font-semibold text-slate-700 dark:bg-[#111113] dark:border-[#2A2A2E] dark:text-[#D4D4D8]">
                     <Layers className="h-3.5 w-3.5" /> All 5 Functional Domains
                   </span>
                 </div>
 
                 {/* Mandate Target Notice */}
-                <div className="flex items-center justify-between rounded-lg border border-blue-200 bg-blue-50/70 px-4 py-2.5 text-xs text-blue-950">
+                <div className="flex items-center justify-between rounded-lg border border-blue-200 bg-blue-50/70 px-4 py-2.5 text-xs text-blue-950 dark:border-blue-900/50 dark:bg-blue-950/30 dark:text-blue-200">
                   <div className="flex items-center gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-[#0b2945]" />
+                    <CheckCircle2 className="h-4 w-4 text-[#0b2945] dark:text-blue-400" />
                     <span>
                       National Mandate Target is locked at <strong>70% proficiency</strong> across State DES Cadres.
                     </span>
@@ -252,39 +252,39 @@ export default function DashboardPage() {
                     const status = comp.status;
 
                     let barColor = "bg-emerald-600";
-                    let badgeClass = "bg-emerald-50 text-emerald-800 border border-emerald-200";
+                    let badgeClass = "bg-emerald-50 text-emerald-800 border border-emerald-200 dark:bg-emerald-950/30 dark:text-emerald-300 dark:border-emerald-800/50";
                     if (score < 40) {
                       barColor = "bg-red-600";
-                      badgeClass = "bg-red-50 text-red-800 border border-red-200";
+                      badgeClass = "bg-red-50 text-red-800 border border-red-200 dark:bg-red-950/30 dark:text-red-300 dark:border-red-800/50";
                     } else if (score < 50) {
                       barColor = "bg-amber-600";
-                      badgeClass = "bg-amber-50 text-amber-800 border border-amber-200";
+                      badgeClass = "bg-amber-50 text-amber-800 border border-amber-200 dark:bg-amber-950/30 dark:text-amber-300 dark:border-amber-800/50";
                     } else if (score < 70) {
                       barColor = "bg-[#2563eb]";
-                      badgeClass = "bg-blue-50 text-blue-800 border border-blue-200";
+                      badgeClass = "bg-blue-50 text-blue-800 border border-blue-200 dark:bg-blue-950/30 dark:text-blue-300 dark:border-blue-800/50";
                     }
 
                     return (
                       <div key={comp.competencyId} className="space-y-1.5">
                         <div className="flex items-center justify-between text-xs">
                           <div className="flex items-center gap-2">
-                            <span className="font-bold text-[#0f1f35]">
+                            <span className="font-bold text-[#0f1f35] dark:text-[#F5F5F5]">
                               {compDef?.name}
                             </span>
                             <span className={`px-2 py-0.5 rounded-full text-[10px] font-semibold ${badgeClass}`}>
                               {status}
                             </span>
                           </div>
-                          <span className="font-mono text-sm font-bold text-[#0f1f35]">
+                          <span className="font-mono text-sm font-bold text-[#0f1f35] dark:text-[#F5F5F5]">
                             {score}%
                           </span>
                         </div>
 
                         {/* Relative Bar with 70% Marker */}
-                        <div className="relative h-3 w-full rounded-full bg-slate-100">
+                        <div className="relative h-3 w-full rounded-full bg-slate-100 dark:bg-[#2A2A2E]">
                           {/* 70% target dotted marker line */}
                           <div
-                            className="absolute top-[-4px] bottom-[-4px] w-0.5 border-l-2 border-dashed border-slate-400 z-10"
+                            className="absolute top-[-4px] bottom-[-4px] w-0.5 border-l-2 border-dashed border-slate-400 dark:border-slate-500 z-10"
                             style={{ left: "70%" }}
                             title="70% National Benchmark"
                           />
@@ -299,7 +299,7 @@ export default function DashboardPage() {
                 </div>
 
                 {/* Legend */}
-                <div className="flex flex-wrap items-center justify-between gap-3 border-t border-slate-100 pt-4 text-[11px] text-slate-500">
+                <div className="flex flex-wrap items-center justify-between gap-3 border-t border-slate-100 dark:border-[#2A2A2E] pt-4 text-[11px] text-slate-500 dark:text-[#A1A1AA]">
                   <div className="flex items-center gap-4">
                     <span className="flex items-center gap-1.5">
                       <span className="h-2 w-2 rounded-full bg-emerald-600" />
@@ -323,48 +323,48 @@ export default function DashboardPage() {
               {/* Right Column (4 cols): Urgent Action & AI Diagnostics */}
               <div className="lg:col-span-4 space-y-6">
                 {/* Urgent Action Card */}
-                <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-xs space-y-4">
-                  <div className="flex items-center justify-between text-[11px] font-bold uppercase tracking-wider text-amber-800">
+                <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-xs space-y-4 dark:border-[#2A2A2E] dark:bg-[#171719]">
+                  <div className="flex items-center justify-between text-[11px] font-bold uppercase tracking-wider text-amber-800 dark:text-amber-400">
                     <span>Urgent Action</span>
-                    <span className="flex items-center gap-1 text-red-600">
+                    <span className="flex items-center gap-1 text-red-600 dark:text-red-400">
                       <AlertTriangle className="h-3 w-3" /> Critical Action Needed
                     </span>
                   </div>
 
                   {priorityGap ? (
                     <div>
-                      <h3 className="text-base font-extrabold text-[#0f1f35]">
+                      <h3 className="text-base font-extrabold text-[#0f1f35] dark:text-[#F5F5F5]">
                         {COMPETENCIES.find((c) => c.id === priorityGap.competencyId)?.name}
                       </h3>
-                      <p className="mt-1 text-xs text-slate-500 leading-relaxed">
+                      <p className="mt-1 text-xs text-slate-500 dark:text-[#A1A1AA] leading-relaxed">
                         Statutory calculations, sampling probability variance, and hypothesis validity testing deficit.
                       </p>
 
-                      <div className="mt-4 grid grid-cols-3 gap-2 rounded-lg bg-slate-50 p-3 text-center border border-slate-200">
+                      <div className="mt-4 grid grid-cols-3 gap-2 rounded-lg bg-slate-50 p-3 text-center border border-slate-200 dark:bg-[#111113] dark:border-[#2A2A2E]">
                         <div>
-                          <div className="text-[10px] text-slate-400 uppercase font-semibold">Current</div>
-                          <div className="text-sm font-extrabold text-red-600">{priorityGap.score}%</div>
+                          <div className="text-[10px] text-slate-400 dark:text-[#71717A] uppercase font-semibold">Current</div>
+                          <div className="text-sm font-extrabold text-red-600 dark:text-red-400">{priorityGap.score}%</div>
                         </div>
                         <div>
-                          <div className="text-[10px] text-slate-400 uppercase font-semibold">Standard</div>
-                          <div className="text-sm font-extrabold text-[#0f1f35]">70%</div>
+                          <div className="text-[10px] text-slate-400 dark:text-[#71717A] uppercase font-semibold">Standard</div>
+                          <div className="text-sm font-extrabold text-[#0f1f35] dark:text-[#F5F5F5]">70%</div>
                         </div>
                         <div>
-                          <div className="text-[10px] text-slate-400 uppercase font-semibold">Deficit</div>
-                          <div className="text-sm font-extrabold text-red-600">-{priorityGap.gap}%</div>
+                          <div className="text-[10px] text-slate-400 dark:text-[#71717A] uppercase font-semibold">Deficit</div>
+                          <div className="text-sm font-extrabold text-red-600 dark:text-red-400">-{priorityGap.gap}%</div>
                         </div>
                       </div>
 
                       <div className="mt-4 flex items-center justify-between text-xs">
-                        <span className="font-semibold text-amber-800 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">
+                        <span className="font-semibold text-amber-800 bg-amber-50 px-2 py-0.5 rounded border border-amber-200 dark:text-amber-300 dark:bg-amber-950/30 dark:border-amber-800/50">
                           {priorityGap.status}
                         </span>
-                        <span className="text-[11px] text-slate-500">Target for promotion roster</span>
+                        <span className="text-[11px] text-slate-500 dark:text-[#71717A]">Target for promotion roster</span>
                       </div>
 
                       <Link
                         href="/competency"
-                        className="mt-4 flex w-full items-center justify-center gap-2 rounded-lg bg-[#0b2945] py-2.5 text-xs font-semibold text-white hover:bg-[#081f35] transition-colors"
+                        className="mt-4 flex w-full items-center justify-center gap-2 rounded-lg bg-[#0b2945] py-2.5 text-xs font-semibold text-white hover:bg-[#081f35] dark:bg-blue-600 dark:hover:bg-blue-500 transition-colors"
                       >
                         View Competency Analysis
                         <ArrowRight className="h-3.5 w-3.5" />
@@ -372,13 +372,13 @@ export default function DashboardPage() {
                     </div>
                   ) : (
                     <div className="text-center py-6 space-y-2">
-                      <CheckCircle2 className="h-8 w-8 text-emerald-600 mx-auto" />
-                      <p className="text-xs font-semibold text-slate-700">
+                      <CheckCircle2 className="h-8 w-8 text-emerald-600 dark:text-emerald-400 mx-auto" />
+                      <p className="text-xs font-semibold text-slate-700 dark:text-[#D4D4D8]">
                         {isEstablished ? "No critical competency deficits!" : "No assessment submitted yet"}
                       </p>
                       <Link
                         href={isEstablished ? "/competency" : "/assessment"}
-                        className="inline-block mt-2 text-xs font-bold text-[#0b2945] hover:underline"
+                        className="inline-block mt-2 text-xs font-bold text-[#0b2945] dark:text-blue-400 hover:underline"
                       >
                         {isEstablished ? "View Full Matrix" : "Take Initial Assessment"}
                       </Link>
@@ -387,13 +387,13 @@ export default function DashboardPage() {
                 </div>
 
                 {/* iGOT AI Diagnostic Insight Card */}
-                <div className="rounded-xl border border-blue-200 bg-blue-50/60 p-5 shadow-xs space-y-3">
-                  <div className="flex items-center gap-2 text-xs font-bold text-[#0b2945]">
-                    <Sparkles className="h-4 w-4 text-[#0b2945]" />
+                <div className="rounded-xl border border-blue-200 bg-blue-50/60 p-5 shadow-xs space-y-3 dark:border-blue-900/50 dark:bg-blue-950/20">
+                  <div className="flex items-center gap-2 text-xs font-bold text-[#0b2945] dark:text-blue-300">
+                    <Sparkles className="h-4 w-4 text-[#0b2945] dark:text-blue-400" />
                     iGOT AI DIAGNOSTIC INSIGHT
                   </div>
 
-                  <p className="text-xs text-slate-700 leading-relaxed">
+                  <p className="text-xs text-slate-700 dark:text-[#D4D4D8] leading-relaxed">
                     {isEstablished ? (
                       <>
                         Your strongest area is <strong>{bestCompDef?.name} ({bestComp?.score}%)</strong>.
@@ -410,8 +410,8 @@ export default function DashboardPage() {
                     )}
                   </p>
 
-                  <div className="pt-2 text-[10px] text-slate-500 flex items-center gap-1.5 border-t border-blue-100">
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-600" />
+                  <div className="pt-2 text-[10px] text-slate-500 dark:text-[#A1A1AA] flex items-center gap-1.5 border-t border-blue-100 dark:border-blue-900/40">
+                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-600 dark:bg-emerald-400" />
                     Automated Cadre Review Active
                   </div>
                 </div>
@@ -423,20 +423,20 @@ export default function DashboardPage() {
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                 <div>
                   <div className="flex items-center gap-2">
-                    <h2 className="text-lg font-bold text-[#0f1f35]">
+                    <h2 className="text-lg font-bold text-[#0f1f35] dark:text-[#F5F5F5]">
                       Recommended Learning
                     </h2>
-                    <span className="rounded bg-blue-50 border border-blue-200 px-2 py-0.5 text-[10px] font-bold text-[#0b2945] uppercase">
+                    <span className="rounded bg-blue-50 border border-blue-200 px-2 py-0.5 text-[10px] font-bold text-[#0b2945] uppercase dark:bg-blue-950/40 dark:border-blue-900/50 dark:text-blue-300">
                       Official Curated
                     </span>
                   </div>
-                  <p className="text-xs text-slate-500">
+                  <p className="text-xs text-slate-500 dark:text-[#A1A1AA]">
                     High-impact certified pathways sourced directly from the iGOT Karmayogi Digital Repository
                   </p>
                 </div>
                 <Link
                   href="/learning"
-                  className="text-xs font-bold text-[#0b2945] hover:underline flex items-center gap-1"
+                  className="text-xs font-bold text-[#0b2945] dark:text-blue-400 hover:underline flex items-center gap-1"
                 >
                   Explore All Cadre Modules <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
@@ -448,35 +448,35 @@ export default function DashboardPage() {
                   return (
                     <div
                       key={res.id}
-                      className="rounded-xl border border-slate-200 bg-white p-5 shadow-xs hover:border-slate-300 transition-all flex flex-col justify-between"
+                      className="rounded-xl border border-slate-200 bg-white p-5 shadow-xs hover:border-slate-300 dark:border-[#2A2A2E] dark:bg-[#171719] dark:hover:border-[#38383E] transition-all flex flex-col justify-between"
                     >
                       <div>
                         <div className="flex items-center justify-between text-[10px] font-bold">
-                          <span className="text-[#0b2945] uppercase tracking-wider">
+                          <span className="text-[#0b2945] dark:text-blue-300 uppercase tracking-wider">
                             iGOT Karmayogi
                           </span>
                           {res.curatedTag && (
-                            <span className="rounded bg-amber-50 px-2 py-0.5 text-amber-800 border border-amber-200">
+                            <span className="rounded bg-amber-50 px-2 py-0.5 text-amber-800 border border-amber-200 dark:bg-amber-950/40 dark:text-amber-300 dark:border-amber-800/50">
                               {res.curatedTag}
                             </span>
                           )}
                         </div>
 
-                        <div className="mt-2 text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                        <div className="mt-2 text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-[#71717A]">
                           {comp?.name}
                         </div>
 
-                        <h3 className="mt-1 text-sm font-bold text-[#0f1f35] leading-snug">
+                        <h3 className="mt-1 text-sm font-bold text-[#0f1f35] dark:text-[#F5F5F5] leading-snug">
                           {res.title}
                         </h3>
 
-                        <p className="mt-2 text-xs text-slate-500 line-clamp-2 leading-relaxed">
+                        <p className="mt-2 text-xs text-slate-500 dark:text-[#A1A1AA] line-clamp-2 leading-relaxed">
                           {res.description}
                         </p>
                       </div>
 
-                      <div className="mt-5 pt-3 border-t border-slate-100">
-                        <div className="flex items-center justify-between text-xs text-slate-500 mb-3">
+                      <div className="mt-5 pt-3 border-t border-slate-100 dark:border-[#2A2A2E]">
+                        <div className="flex items-center justify-between text-xs text-slate-500 dark:text-[#A1A1AA] mb-3">
                           <span>{res.difficulty}</span>
                           <span className="flex items-center gap-1">
                             <Clock className="h-3 w-3" /> {res.durationHours} Hours
@@ -485,7 +485,7 @@ export default function DashboardPage() {
 
                         <Link
                           href="/learning"
-                          className="flex w-full items-center justify-center gap-2 rounded-lg bg-slate-50 border border-slate-200 py-2 text-xs font-semibold text-[#0b2945] hover:bg-slate-100 transition-colors"
+                          className="flex w-full items-center justify-center gap-2 rounded-lg bg-slate-50 border border-slate-200 py-2 text-xs font-semibold text-[#0b2945] hover:bg-slate-100 dark:bg-[#111113] dark:border-[#2A2A2E] dark:text-blue-300 dark:hover:bg-[#1D1D20] transition-colors"
                         >
                           View Learning <ExternalLink className="h-3 w-3" />
                         </Link>
@@ -498,24 +498,24 @@ export default function DashboardPage() {
 
             {/* Recent Assessment Completed Banner */}
             {(recentAssessment || recentQuizAttempt) && (
-              <div className="rounded-xl border border-emerald-200 bg-emerald-50/70 p-4 shadow-xs">
+              <div className="rounded-xl border border-emerald-200 bg-emerald-50/70 p-4 shadow-xs dark:border-emerald-800/50 dark:bg-emerald-950/25">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                   <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-emerald-100 text-emerald-800">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-emerald-100 text-emerald-800 dark:bg-emerald-900/50 dark:text-emerald-300">
                       <CheckCircle2 className="h-5 w-5" />
                     </div>
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="text-xs font-bold uppercase tracking-wider text-emerald-900">
+                        <span className="text-xs font-bold uppercase tracking-wider text-emerald-900 dark:text-emerald-200">
                           Recent Assessment Completed
                         </span>
-                        <span className="rounded bg-emerald-200/80 px-2 py-0.5 text-xs font-extrabold text-emerald-950">
+                        <span className="rounded bg-emerald-200/80 px-2 py-0.5 text-xs font-extrabold text-emerald-950 dark:bg-emerald-800 dark:text-emerald-100">
                           {recentQuizAttempt
                             ? `${recentQuizAttempt.score}%`
                             : `${recentAssessment?.overallScore}%`}
                         </span>
                       </div>
-                      <p className="text-xs text-emerald-900 mt-0.5">
+                      <p className="text-xs text-emerald-900 dark:text-emerald-300 mt-0.5">
                         {recentQuizAttempt
                           ? `Topic: ${recentQuizAttempt.quizTitle}`
                           : "Topic: National Official Statistical System Comprehensive Diagnostic"}
@@ -525,7 +525,7 @@ export default function DashboardPage() {
 
                   <Link
                     href="/competency"
-                    className="inline-flex items-center gap-1.5 rounded-lg bg-white px-3.5 py-1.5 text-xs font-semibold text-[#0f1f35] shadow-xs border border-slate-200 hover:bg-slate-50 shrink-0"
+                    className="inline-flex items-center gap-1.5 rounded-lg bg-white px-3.5 py-1.5 text-xs font-semibold text-[#0f1f35] shadow-xs border border-slate-200 hover:bg-slate-50 dark:bg-[#171719] dark:text-[#F5F5F5] dark:border-[#2A2A2E] dark:hover:bg-[#1D1D20] shrink-0"
                   >
                     View Matrix &amp; Gaps <ArrowRight className="h-3.5 w-3.5" />
                   </Link>

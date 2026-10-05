@@ -47,7 +47,7 @@ export function AppShell({
 
   return (
     <div
-      className="flex min-h-screen bg-[#f8fafd] text-[#0f1f35]"
+      className="flex min-h-screen bg-[#f8fafd] text-[#0f1f35] dark:bg-[#0A0A0B] dark:text-[#F5F5F5] transition-colors duration-150"
       suppressHydrationWarning
     >
       <AppSidebar onResetData={() => window.location.reload()} />

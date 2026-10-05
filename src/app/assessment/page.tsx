@@ -79,35 +79,35 @@ export default function AssessmentPage() {
 
         if (completedResult) {
           return (
-            <div className="max-w-2xl mx-auto space-y-6 text-center py-8 text-[#0f1f35]" suppressHydrationWarning>
-              <div className="rounded-2xl border border-emerald-200 bg-white p-8 shadow-xs space-y-6">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 text-emerald-700 mx-auto">
+            <div className="max-w-2xl mx-auto space-y-6 text-center py-8 text-[#0f1f35] dark:text-[#F5F5F5]" suppressHydrationWarning>
+              <div className="rounded-2xl border border-emerald-200 dark:border-emerald-800/60 bg-white dark:bg-[#171719] p-8 shadow-xs space-y-6">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 mx-auto">
                   <CheckCircle2 className="h-10 w-10" />
                 </div>
 
                 <div>
-                  <h1 className="text-2xl font-extrabold text-[#0f1f35]">
+                  <h1 className="text-2xl font-extrabold text-[#0f1f35] dark:text-[#F5F5F5]">
                     Diagnostic Assessment Evaluated!
                   </h1>
-                  <p className="text-xs text-slate-500 mt-1">
+                  <p className="text-xs text-slate-500 dark:text-[#A1A1AA] mt-1">
                     Your baseline performance has been recorded into the National Statistical Systems matrix.
                   </p>
                 </div>
 
-                <div className="rounded-xl bg-slate-50 p-6 border border-slate-200">
-                  <div className="text-xs font-bold uppercase text-slate-400">
+                <div className="rounded-xl bg-slate-50 dark:bg-[#111113] p-6 border border-slate-200 dark:border-[#2A2A2E]">
+                  <div className="text-xs font-bold uppercase text-slate-400 dark:text-[#71717A]">
                     Overall Competency Established
                   </div>
-                  <div className="text-5xl font-black text-[#0b2945] my-2">
+                  <div className="text-5xl font-black text-[#0b2945] dark:text-blue-400 my-2">
                     {completedResult.overallScore}%
                   </div>
-                  <div className="text-xs text-slate-600">
+                  <div className="text-xs text-slate-600 dark:text-[#A1A1AA]">
                     National Benchmark Target: <strong>70%</strong>
                   </div>
                 </div>
 
                 <div className="text-left space-y-2 pt-2">
-                  <div className="text-xs font-bold uppercase text-slate-400">
+                  <div className="text-xs font-bold uppercase text-slate-400 dark:text-[#71717A]">
                     Competency Breakdown
                   </div>
                   {COMPETENCIES.map((c) => {
@@ -115,10 +115,10 @@ export default function AssessmentPage() {
                     return (
                       <div
                         key={c.id}
-                        className="flex items-center justify-between text-xs py-2 border-b border-slate-100"
+                        className="flex items-center justify-between text-xs py-2 border-b border-slate-100 dark:border-[#2A2A2E]"
                       >
-                        <span className="font-semibold text-slate-700">{c.name}</span>
-                        <span className="font-mono font-bold text-[#0f1f35]">{sc}%</span>
+                        <span className="font-semibold text-slate-700 dark:text-[#A1A1AA]">{c.name}</span>
+                        <span className="font-mono font-bold text-[#0f1f35] dark:text-[#F5F5F5]">{sc}%</span>
                       </div>
                     );
                   })}
@@ -127,13 +127,13 @@ export default function AssessmentPage() {
                 <div className="flex flex-col sm:flex-row gap-3 pt-4">
                   <button
                     onClick={() => router.push("/competency")}
-                    className="flex-1 flex items-center justify-center gap-2 rounded-xl bg-[#0b2945] py-3 text-xs font-bold text-white shadow-xs hover:bg-[#081f35] transition-colors"
+                    className="flex-1 flex items-center justify-center gap-2 rounded-xl bg-[#0b2945] hover:bg-[#081f35] dark:bg-blue-600 dark:hover:bg-blue-500 py-3 text-xs font-bold text-white shadow-xs transition-colors"
                   >
                     View Competency Analysis <ArrowRight className="h-4 w-4" />
                   </button>
                   <button
                     onClick={() => router.push("/dashboard")}
-                    className="flex-1 rounded-xl border border-slate-200 bg-white py-3 text-xs font-semibold text-slate-700 hover:bg-slate-50"
+                    className="flex-1 rounded-xl border border-slate-200 dark:border-[#2A2A2E] bg-white dark:bg-[#1D1D20] py-3 text-xs font-semibold text-slate-700 dark:text-[#F5F5F5] hover:bg-slate-50 dark:hover:bg-[#2A2A2E]"
                   >
                     Go to Dashboard
                   </button>
@@ -146,41 +146,41 @@ export default function AssessmentPage() {
         const compDef = COMPETENCIES.find((c) => c.id === currentQ.competencyId);
 
         return (
-          <div className="max-w-3xl mx-auto space-y-6 text-[#0f1f35]" suppressHydrationWarning>
+          <div className="max-w-3xl mx-auto space-y-6 text-[#0f1f35] dark:text-[#F5F5F5]" suppressHydrationWarning>
             {/* Header */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 pb-4">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 dark:border-[#2A2A2E] pb-4">
               <div>
-                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#0b2945]">
+                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#0b2945] dark:text-blue-400">
                   <ClipboardCheck className="h-4 w-4" />
                   MoSPI Initial Diagnostic Assessment
                 </div>
-                <h1 className="mt-1 text-xl font-extrabold text-[#0f1f35]">
+                <h1 className="mt-1 text-xl font-extrabold text-[#0f1f35] dark:text-[#F5F5F5]">
                   Official Statistical System Competency Baseline
                 </h1>
               </div>
 
               <div className="flex items-center gap-3 text-xs">
-                <span className="flex items-center gap-1 rounded bg-white border border-slate-200 px-2.5 py-1 text-slate-600">
+                <span className="flex items-center gap-1 rounded bg-white dark:bg-[#171719] border border-slate-200 dark:border-[#2A2A2E] px-2.5 py-1 text-slate-600 dark:text-[#A1A1AA]">
                   <Clock className="h-3.5 w-3.5" /> 10 Questions
                 </span>
-                <span className="rounded bg-blue-50 border border-blue-200 px-2.5 py-1 font-bold text-blue-900">
+                <span className="rounded bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900/60 px-2.5 py-1 font-bold text-blue-900 dark:text-blue-300">
                   Answered: {answeredCount}/{questions.length}
                 </span>
               </div>
             </div>
 
             {/* Switcher Banner */}
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 rounded-xl border border-blue-200 bg-blue-50/70 p-3.5 shadow-2xs">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 rounded-xl border border-blue-200 dark:border-[#2A2A2E] bg-blue-50/70 dark:bg-[#171719] p-3.5 shadow-2xs">
               <div className="flex items-center gap-2.5 text-xs">
-                <Sparkles className="h-4 w-4 text-[#0b2945] shrink-0" />
+                <Sparkles className="h-4 w-4 text-[#0b2945] dark:text-blue-400 shrink-0" />
                 <div>
-                  <span className="font-bold text-[#0f1f35]">Looking to generate custom assessments from official PDFs? </span>
-                  <span className="text-slate-500">Upload cadre manuals or survey guides.</span>
+                  <span className="font-bold text-[#0f1f35] dark:text-[#F5F5F5]">Looking to generate custom assessments from official PDFs? </span>
+                  <span className="text-slate-500 dark:text-[#A1A1AA]">Upload cadre manuals or survey guides.</span>
                 </div>
               </div>
               <Link
                 href="/ai-generator"
-                className="inline-flex items-center gap-1.5 rounded-lg bg-[#0b2945] px-3.5 py-1.5 text-xs font-bold text-white hover:bg-[#081f35] transition-colors shrink-0"
+                className="inline-flex items-center gap-1.5 rounded-lg bg-[#0b2945] hover:bg-[#081f35] dark:bg-blue-600 dark:hover:bg-blue-500 px-3.5 py-1.5 text-xs font-bold text-white transition-colors shrink-0"
               >
                 AI Assessment Generator <ArrowRight className="h-3 w-3" />
               </Link>
@@ -197,10 +197,10 @@ export default function AssessmentPage() {
                     onClick={() => setCurrentQuestionIndex(idx)}
                     className={`h-2.5 rounded-full transition-all ${
                       isCurrent
-                        ? "bg-[#0b2945] ring-2 ring-blue-300"
+                        ? "bg-[#0b2945] dark:bg-blue-500 ring-2 ring-blue-300 dark:ring-blue-700"
                         : isAnswered
-                        ? "bg-emerald-600"
-                        : "bg-slate-200"
+                        ? "bg-emerald-600 dark:bg-emerald-500"
+                        : "bg-slate-200 dark:bg-[#2A2A2E]"
                     }`}
                     title={`Question ${idx + 1}`}
                   />
@@ -209,17 +209,17 @@ export default function AssessmentPage() {
             </div>
 
             {/* Question Card */}
-            <div className="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 shadow-xs space-y-6">
+            <div className="rounded-2xl border border-slate-200 dark:border-[#2A2A2E] bg-white dark:bg-[#171719] p-6 sm:p-8 shadow-xs space-y-6">
               <div className="flex items-center justify-between text-xs">
-                <span className="rounded bg-blue-50 border border-blue-200 px-2.5 py-1 font-bold text-[#0b2945]">
+                <span className="rounded bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900/60 px-2.5 py-1 font-bold text-[#0b2945] dark:text-blue-300">
                   Domain: {compDef?.name}
                 </span>
-                <span className="font-mono text-slate-400">
+                <span className="font-mono text-slate-400 dark:text-[#71717A]">
                   Question {currentQuestionIndex + 1} of {questions.length}
                 </span>
               </div>
 
-              <h2 className="text-base sm:text-lg font-bold text-[#0f1f35] leading-relaxed">
+              <h2 className="text-base sm:text-lg font-bold text-[#0f1f35] dark:text-[#F5F5F5] leading-relaxed">
                 {currentQ.question}
               </h2>
 
@@ -234,15 +234,15 @@ export default function AssessmentPage() {
                       onClick={() => handleSelectOption(currentQ.id, optIdx)}
                       className={`flex w-full items-start gap-3 rounded-xl p-4 text-left transition-all border ${
                         isSelected
-                          ? "border-[#0b2945] bg-blue-50/70 text-blue-950 font-semibold shadow-xs"
-                          : "border-slate-200 bg-white hover:bg-slate-50 text-slate-800"
+                          ? "border-[#0b2945] dark:border-blue-500 bg-blue-50/70 dark:bg-blue-950/40 text-blue-950 dark:text-blue-200 font-semibold shadow-xs"
+                          : "border-slate-200 dark:border-[#2A2A2E] bg-white dark:bg-[#1D1D20] hover:bg-slate-50 dark:hover:bg-[#2A2A2E] text-slate-800 dark:text-[#F5F5F5]"
                       }`}
                     >
                       <div
                         className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold border ${
                           isSelected
-                            ? "border-[#0b2945] bg-[#0b2945] text-white"
-                            : "border-slate-300 text-slate-500 bg-slate-50"
+                            ? "border-[#0b2945] dark:border-blue-500 bg-[#0b2945] dark:bg-blue-600 text-white"
+                            : "border-slate-300 dark:border-[#2A2A2E] text-slate-500 dark:text-[#A1A1AA] bg-slate-50 dark:bg-[#111113]"
                         }`}
                       >
                         {String.fromCharCode(65 + optIdx)}
@@ -256,12 +256,12 @@ export default function AssessmentPage() {
               </div>
 
               {/* Navigation Bar */}
-              <div className="flex items-center justify-between pt-4 border-t border-slate-100">
+              <div className="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-[#2A2A2E]">
                 <button
                   type="button"
                   disabled={currentQuestionIndex === 0}
                   onClick={() => setCurrentQuestionIndex((prev) => prev - 1)}
-                  className="flex items-center gap-1.5 rounded-lg border border-slate-200 px-4 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-50 disabled:opacity-30"
+                  className="flex items-center gap-1.5 rounded-lg border border-slate-200 dark:border-[#2A2A2E] bg-white dark:bg-[#1D1D20] px-4 py-2 text-xs font-semibold text-slate-700 dark:text-[#F5F5F5] hover:bg-slate-50 dark:hover:bg-[#2A2A2E] disabled:opacity-30"
                 >
                   <ArrowLeft className="h-3.5 w-3.5" /> Previous
                 </button>
@@ -270,7 +270,7 @@ export default function AssessmentPage() {
                   <button
                     type="button"
                     onClick={() => setCurrentQuestionIndex((prev) => prev + 1)}
-                    className="flex items-center gap-1.5 rounded-lg bg-[#0b2945] px-5 py-2 text-xs font-bold text-white hover:bg-[#081f35] transition-colors"
+                    className="flex items-center gap-1.5 rounded-lg bg-[#0b2945] hover:bg-[#081f35] dark:bg-blue-600 dark:hover:bg-blue-500 px-5 py-2 text-xs font-bold text-white transition-colors"
                   >
                     Next Question <ArrowRight className="h-3.5 w-3.5" />
                   </button>
@@ -279,7 +279,7 @@ export default function AssessmentPage() {
                     type="button"
                     disabled={isSubmitting}
                     onClick={() => handleSubmit(user.id)}
-                    className="flex items-center gap-1.5 rounded-lg bg-emerald-700 px-6 py-2.5 text-xs font-bold text-white shadow-xs hover:bg-emerald-800 transition-colors disabled:opacity-50"
+                    className="flex items-center gap-1.5 rounded-lg bg-emerald-700 hover:bg-emerald-800 dark:bg-emerald-600 dark:hover:bg-emerald-500 px-6 py-2.5 text-xs font-bold text-white shadow-xs transition-colors disabled:opacity-50"
                   >
                     <Check className="h-4 w-4" />
                     {isSubmitting ? "Scoring Assessment..." : "Submit Diagnostic Assessment"}
@@ -289,8 +289,8 @@ export default function AssessmentPage() {
             </div>
 
             {/* Bottom Disclaimer */}
-            <div className="text-center text-[11px] text-slate-500 flex items-center justify-center gap-1.5">
-              <ShieldCheck className="h-3.5 w-3.5 text-slate-500" />
+            <div className="text-center text-[11px] text-slate-500 dark:text-[#71717A] flex items-center justify-center gap-1.5">
+              <ShieldCheck className="h-3.5 w-3.5 text-slate-500 dark:text-[#71717A]" />
               Evaluation adheres to MoSPI Competency Evaluation Standards &amp; iGOT Karmayogi Framework
             </div>
           </div>

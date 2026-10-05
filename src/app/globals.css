@@ -1,8 +1,28 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --background: #f8fafd;
   --foreground: #0f1f35;
+  --surface-card: #ffffff;
+  --surface-elevated: #f8fafd;
+  --border-subtle: #e2e8f0;
+  --chart-primary: #0b2945;
+  --chart-grid: rgba(11, 41, 69, 0.12);
+  --chart-target: #0b2945;
+}
+
+.dark {
+  --background: #0a0a0b;
+  --foreground: #f5f5f5;
+  --surface-card: #171719;
+  --surface-elevated: #1d1d20;
+  --border-subtle: #2a2a2e;
+  --chart-primary: #3b82f6;
+  --chart-grid: rgba(255, 255, 255, 0.1);
+  --chart-target: #60a5fa;
+  color-scheme: dark;
 }
 
 body {
@@ -11,4 +31,9 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
   padding: 0;
+}
+
+.dark body {
+  background-color: #0a0a0b;
+  color: #f5f5f5;
 }

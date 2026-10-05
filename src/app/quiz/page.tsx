@@ -13,10 +13,10 @@ function QuizRedirect() {
   }, [router, id]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-[#f8fafd] text-[#0f1f35]">
+    <div className="flex min-h-screen items-center justify-center bg-[#f8fafd] dark:bg-[#0A0A0B] text-[#0f1f35] dark:text-[#F5F5F5]">
       <div className="text-center space-y-2">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-[#0b2945] border-t-transparent mx-auto" />
-        <p className="text-xs font-semibold text-slate-500">Loading AI Quiz...</p>
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-[#0b2945] dark:border-blue-500 border-t-transparent mx-auto" />
+        <p className="text-xs font-semibold text-slate-500 dark:text-[#A1A1AA]">Loading AI Quiz...</p>
       </div>
     </div>
   );
@@ -26,10 +26,10 @@ export default function QuizIndexPage() {
   return (
     <Suspense
       fallback={
-        <div className="flex min-h-screen items-center justify-center bg-[#f8fafd] text-[#0f1f35]">
+        <div className="flex min-h-screen items-center justify-center bg-[#f8fafd] dark:bg-[#0A0A0B] text-[#0f1f35] dark:text-[#F5F5F5]">
           <div className="text-center space-y-2">
-            <div className="h-8 w-8 animate-spin rounded-full border-4 border-[#0b2945] border-t-transparent mx-auto" />
-            <p className="text-xs font-semibold text-slate-500">Loading AI Quiz...</p>
+            <div className="h-8 w-8 animate-spin rounded-full border-4 border-[#0b2945] dark:border-blue-500 border-t-transparent mx-auto" />
+            <p className="text-xs font-semibold text-slate-500 dark:text-[#A1A1AA]">Loading AI Quiz...</p>
           </div>
         </div>
       }

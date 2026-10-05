@@ -357,24 +357,24 @@ export default function AIQuizPage({ params }: PageProps) {
         };
 
         return (
-          <div className="space-y-6 text-[#0f1f35]" suppressHydrationWarning>
+          <div className="space-y-6 text-[#0f1f35] dark:text-[#F5F5F5]" suppressHydrationWarning>
             {/* Top Official Assessment Header */}
-            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div className="rounded-2xl border border-slate-200 dark:border-[#2A2A2E] bg-white dark:bg-[#171719] p-6 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="rounded bg-slate-100 border border-slate-200 px-2 py-0.5 font-mono text-[10px] font-bold text-slate-600 uppercase">
+                  <span className="rounded bg-slate-100 dark:bg-[#1D1D20] border border-slate-200 dark:border-[#2A2A2E] px-2 py-0.5 font-mono text-[10px] font-bold text-slate-600 dark:text-[#A1A1AA] uppercase">
                     Official Assessment
                   </span>
-                  <span className="text-slate-400 text-xs">•</span>
-                  <span className="font-mono text-xs font-semibold text-slate-500">
+                  <span className="text-slate-400 dark:text-[#71717A] text-xs">•</span>
+                  <span className="font-mono text-xs font-semibold text-slate-500 dark:text-[#A1A1AA]">
                     Session ID: MoSPI-2025-SSO-8841
                   </span>
                 </div>
 
-                <h1 className="mt-2 text-xl sm:text-2xl font-black text-[#0f1f35]">
+                <h1 className="mt-2 text-xl sm:text-2xl font-black text-[#0f1f35] dark:text-[#F5F5F5]">
                   {quizData.title}
                 </h1>
-                <p className="mt-0.5 text-xs text-slate-500">
+                <p className="mt-0.5 text-xs text-slate-500 dark:text-[#A1A1AA]">
                   {user.role} • {user.department}
                 </p>
               </div>
@@ -382,8 +382,8 @@ export default function AIQuizPage({ params }: PageProps) {
               {/* Action Buttons */}
               <div className="flex flex-wrap items-center gap-3">
                 {/* Timer */}
-                <div className="flex items-center gap-2 rounded-xl border border-blue-200 bg-blue-50/70 px-3.5 py-2 text-xs font-bold text-[#0b2945]">
-                  <Clock className="h-4 w-4 text-[#0b2945]" />
+                <div className="flex items-center gap-2 rounded-xl border border-blue-200 dark:border-[#2A2A2E] bg-blue-50/70 dark:bg-[#1D1D20] px-3.5 py-2 text-xs font-bold text-[#0b2945] dark:text-blue-400">
+                  <Clock className="h-4 w-4 text-[#0b2945] dark:text-blue-400" />
                   <span>{formatTimer(secondsRemaining)} remaining</span>
                 </div>
 
@@ -394,9 +394,9 @@ export default function AIQuizPage({ params }: PageProps) {
                     setIsPaused(!isPaused);
                     alert(isPaused ? "Assessment resumed." : "Assessment paused. Your progress has been saved.");
                   }}
-                  className="flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition-colors"
+                  className="flex items-center gap-1.5 rounded-xl border border-slate-200 dark:border-[#2A2A2E] bg-white dark:bg-[#1D1D20] px-3.5 py-2 text-xs font-semibold text-slate-700 dark:text-[#F5F5F5] hover:bg-slate-50 dark:hover:bg-[#2A2A2E] transition-colors"
                 >
-                  <Pause className="h-3.5 w-3.5 text-slate-500" />
+                  <Pause className="h-3.5 w-3.5 text-slate-500 dark:text-[#71717A]" />
                   {isPaused ? "Resume" : "Save & Pause"}
                 </button>
 
@@ -405,7 +405,7 @@ export default function AIQuizPage({ params }: PageProps) {
                   type="button"
                   disabled={isSubmitting}
                   onClick={handleSubmitQuiz}
-                  className="flex items-center gap-2 rounded-xl bg-[#0b2945] px-4 py-2 text-xs font-bold text-white shadow-xs hover:bg-[#081f35] transition-colors disabled:opacity-50"
+                  className="flex items-center gap-2 rounded-xl bg-[#0b2945] hover:bg-[#081f35] dark:bg-blue-600 dark:hover:bg-blue-500 px-4 py-2 text-xs font-bold text-white shadow-xs transition-colors disabled:opacity-50"
                 >
                   <Send className="h-3.5 w-3.5" />
                   {isSubmitting ? "Scoring..." : "Submit Assessment"}
@@ -414,32 +414,32 @@ export default function AIQuizPage({ params }: PageProps) {
             </div>
 
             {/* Progress Status Bar */}
-            <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-xs space-y-2">
+            <div className="rounded-xl border border-slate-200 dark:border-[#2A2A2E] bg-white dark:bg-[#171719] p-4 shadow-xs space-y-2">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
-                <div className="font-bold text-[#0f1f35]">
+                <div className="font-bold text-[#0f1f35] dark:text-[#F5F5F5]">
                   Question {currentIndex + 1} of {questions.length}{" "}
-                  <span className="font-normal text-slate-400">Progress Status</span>
+                  <span className="font-normal text-slate-400 dark:text-[#71717A]">Progress Status</span>
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <span className="inline-flex items-center gap-1 rounded-full bg-blue-50 border border-blue-200 px-2.5 py-0.5 text-[11px] font-bold text-blue-900">
-                    <span className="h-1.5 w-1.5 rounded-full bg-blue-600" />
+                  <span className="inline-flex items-center gap-1 rounded-full bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900/60 px-2.5 py-0.5 text-[11px] font-bold text-blue-900 dark:text-blue-300">
+                    <span className="h-1.5 w-1.5 rounded-full bg-blue-600 dark:bg-blue-400" />
                     {answeredCount} Answered
                   </span>
-                  <span className="rounded-full bg-slate-100 border border-slate-200 px-2.5 py-0.5 text-[11px] font-medium text-slate-600">
+                  <span className="rounded-full bg-slate-100 dark:bg-[#1D1D20] border border-slate-200 dark:border-[#2A2A2E] px-2.5 py-0.5 text-[11px] font-medium text-slate-600 dark:text-[#A1A1AA]">
                     {remainingCount} Remaining
                   </span>
-                  <span className="inline-flex items-center gap-1 rounded-full bg-purple-50 border border-purple-200 px-2.5 py-0.5 text-[11px] font-medium text-purple-900">
-                    <span className="h-1.5 w-1.5 rounded-full bg-purple-600" />
+                  <span className="inline-flex items-center gap-1 rounded-full bg-purple-50 dark:bg-purple-950/40 border border-purple-200 dark:border-purple-900/60 px-2.5 py-0.5 text-[11px] font-medium text-purple-900 dark:text-purple-300">
+                    <span className="h-1.5 w-1.5 rounded-full bg-purple-600 dark:bg-purple-400" />
                     {flaggedCount} Flagged for Review
                   </span>
                 </div>
               </div>
 
               {/* Progress Line */}
-              <div className="h-1.5 w-full rounded-full bg-slate-100 overflow-hidden">
+              <div className="h-1.5 w-full rounded-full bg-slate-100 dark:bg-[#2A2A2E] overflow-hidden">
                 <div
-                  className="h-full bg-[#0b2945] transition-all duration-300"
+                  className="h-full bg-[#0b2945] dark:bg-blue-600 transition-all duration-300"
                   style={{
                     width: `${((currentIndex + 1) / questions.length) * 100}%`,
                   }}
@@ -451,31 +451,31 @@ export default function AIQuizPage({ params }: PageProps) {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
               {/* Left Column: Question Card (7 cols) */}
               <div className="lg:col-span-7 space-y-6">
-                <div className="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 shadow-xs space-y-6">
+                <div className="rounded-2xl border border-slate-200 dark:border-[#2A2A2E] bg-white dark:bg-[#171719] p-6 sm:p-8 shadow-xs space-y-6">
                   {/* Question Category & APAR badge */}
-                  <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-3">
+                  <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 dark:border-[#2A2A2E] pb-3">
                     <div className="flex items-center gap-2">
-                      <span className="font-mono text-xs font-black text-[#0b2945] uppercase tracking-wider">
+                      <span className="font-mono text-xs font-black text-[#0b2945] dark:text-blue-400 uppercase tracking-wider">
                         Question {String(currentIndex + 1).padStart(2, "0")}
                       </span>
-                      <span className="rounded bg-blue-50 border border-blue-200 px-2.5 py-0.5 text-[11px] font-bold text-blue-900">
+                      <span className="rounded bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900/60 px-2.5 py-0.5 text-[11px] font-bold text-blue-900 dark:text-blue-300">
                         {compDef?.name || "Statistical Methods"} • Sampling Theory
                       </span>
                     </div>
 
-                    <span className="rounded bg-slate-100 border border-slate-200 px-2 py-0.5 text-[10px] font-bold text-slate-600">
+                    <span className="rounded bg-slate-100 dark:bg-[#1D1D20] border border-slate-200 dark:border-[#2A2A2E] px-2 py-0.5 text-[10px] font-bold text-slate-600 dark:text-[#A1A1AA]">
                       1 Mark • APAR Accredited
                     </span>
                   </div>
 
                   {/* Question Text */}
                   <div className="space-y-3">
-                    <h2 className="text-base sm:text-lg font-black text-[#0f1f35] leading-relaxed">
+                    <h2 className="text-base sm:text-lg font-black text-[#0f1f35] dark:text-[#F5F5F5] leading-relaxed">
                       {currentQ.question}
                     </h2>
 
-                    <div className="flex items-center gap-1.5 text-xs text-slate-500 italic">
-                      <BookOpen className="h-3.5 w-3.5 text-slate-400 shrink-0" />
+                    <div className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-[#A1A1AA] italic">
+                      <BookOpen className="h-3.5 w-3.5 text-slate-400 dark:text-[#71717A] shrink-0" />
                       <span>
                         Reference: {currentQ.reference || "MoSPI Field Survey Guidelines, Volume IV (Sampling Protocols)"}
                       </span>
@@ -500,16 +500,16 @@ export default function AIQuizPage({ params }: PageProps) {
                           }
                           className={`flex w-full items-start justify-between gap-3 rounded-xl p-4 text-left transition-all border ${
                             isSelected
-                              ? "border-[#0b2945] bg-blue-50/50 shadow-xs ring-1 ring-[#0b2945]"
-                              : "border-slate-200 bg-white hover:bg-slate-50/70 text-slate-800"
+                              ? "border-[#0b2945] dark:border-blue-500 bg-blue-50/50 dark:bg-blue-950/30 shadow-xs ring-1 ring-[#0b2945] dark:ring-blue-500 text-blue-950 dark:text-blue-200"
+                              : "border-slate-200 dark:border-[#2A2A2E] bg-white dark:bg-[#1D1D20] hover:bg-slate-50/70 dark:hover:bg-[#2A2A2E] text-slate-800 dark:text-[#F5F5F5]"
                           }`}
                         >
                           <div className="flex items-start gap-3">
                             <div
                               className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold border transition-colors ${
                                 isSelected
-                                  ? "border-[#0b2945] bg-[#0b2945] text-white"
-                                  : "border-slate-300 text-slate-500 bg-slate-50"
+                                  ? "border-[#0b2945] dark:border-blue-500 bg-[#0b2945] dark:bg-blue-600 text-white"
+                                  : "border-slate-300 dark:border-[#2A2A2E] text-slate-500 dark:text-[#A1A1AA] bg-slate-50 dark:bg-[#111113]"
                               }`}
                             >
                               {letter}
@@ -520,7 +520,7 @@ export default function AIQuizPage({ params }: PageProps) {
                           </div>
 
                           {isSelected && (
-                            <CheckCircle2 className="h-5 w-5 text-[#0b2945] shrink-0 mt-0.5" />
+                            <CheckCircle2 className="h-5 w-5 text-[#0b2945] dark:text-blue-400 shrink-0 mt-0.5" />
                           )}
                         </button>
                       );
@@ -528,9 +528,9 @@ export default function AIQuizPage({ params }: PageProps) {
                   </div>
 
                   {/* Bottom Navigation & Flag */}
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-4 border-t border-slate-100">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-4 border-t border-slate-100 dark:border-[#2A2A2E]">
                     {/* Flag for Review */}
-                    <label className="flex items-center gap-2 cursor-pointer text-xs font-semibold text-slate-600 hover:text-slate-900">
+                    <label className="flex items-center gap-2 cursor-pointer text-xs font-semibold text-slate-600 dark:text-[#A1A1AA] hover:text-slate-900 dark:hover:text-[#F5F5F5]">
                       <input
                         type="checkbox"
                         checked={Boolean(flaggedQuestions[currentQ.id])}
@@ -540,7 +540,7 @@ export default function AIQuizPage({ params }: PageProps) {
                             [currentQ.id]: e.target.checked,
                           }))
                         }
-                        className="h-4 w-4 rounded border-slate-300 text-[#0b2945] focus:ring-[#0b2945]"
+                        className="h-4 w-4 rounded border-slate-300 dark:border-[#2A2A2E] text-[#0b2945] focus:ring-[#0b2945]"
                       />
                       <span>Flag for Review</span>
                     </label>
@@ -551,7 +551,7 @@ export default function AIQuizPage({ params }: PageProps) {
                         type="button"
                         disabled={currentIndex === 0}
                         onClick={() => setCurrentIndex((prev) => prev - 1)}
-                        className="flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-4 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-50 disabled:opacity-40"
+                        className="flex items-center gap-1.5 rounded-lg border border-slate-200 dark:border-[#2A2A2E] bg-white dark:bg-[#1D1D20] px-4 py-2 text-xs font-semibold text-slate-700 dark:text-[#F5F5F5] hover:bg-slate-50 dark:hover:bg-[#2A2A2E] disabled:opacity-40"
                       >
                         <ArrowLeft className="h-3.5 w-3.5" /> Previous Question
                       </button>
@@ -560,7 +560,7 @@ export default function AIQuizPage({ params }: PageProps) {
                         <button
                           type="button"
                           onClick={() => setCurrentIndex((prev) => prev + 1)}
-                          className="flex items-center gap-1.5 rounded-lg bg-[#0b2945] px-5 py-2 text-xs font-bold text-white hover:bg-[#081f35] transition-colors"
+                          className="flex items-center gap-1.5 rounded-lg bg-[#0b2945] hover:bg-[#081f35] dark:bg-blue-600 dark:hover:bg-blue-500 px-5 py-2 text-xs font-bold text-white transition-colors"
                         >
                           Next Question <ArrowRight className="h-3.5 w-3.5" />
                         </button>
@@ -569,7 +569,7 @@ export default function AIQuizPage({ params }: PageProps) {
                           type="button"
                           disabled={isSubmitting}
                           onClick={handleSubmitQuiz}
-                          className="flex items-center gap-1.5 rounded-lg bg-emerald-700 px-5 py-2 text-xs font-bold text-white shadow-xs hover:bg-emerald-800 transition-colors disabled:opacity-50"
+                          className="flex items-center gap-1.5 rounded-lg bg-emerald-700 hover:bg-emerald-800 dark:bg-emerald-600 dark:hover:bg-emerald-500 px-5 py-2 text-xs font-bold text-white shadow-xs transition-colors disabled:opacity-50"
                         >
                           <Check className="h-4 w-4" />
                           {isSubmitting ? "Scoring..." : "Submit Assessment"}
@@ -583,13 +583,13 @@ export default function AIQuizPage({ params }: PageProps) {
               {/* Right Column: Question Navigator & Directives (5 cols) */}
               <div className="lg:col-span-5 space-y-6">
                 {/* CARD 1: Question Navigator */}
-                <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-xs space-y-4">
-                  <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-                    <div className="flex items-center gap-2 text-xs font-bold text-[#0f1f35]">
-                      <LayoutGrid className="h-4 w-4 text-[#0b2945]" />
+                <div className="rounded-2xl border border-slate-200 dark:border-[#2A2A2E] bg-white dark:bg-[#171719] p-6 shadow-xs space-y-4">
+                  <div className="flex items-center justify-between border-b border-slate-100 dark:border-[#2A2A2E] pb-3">
+                    <div className="flex items-center gap-2 text-xs font-bold text-[#0f1f35] dark:text-[#F5F5F5]">
+                      <LayoutGrid className="h-4 w-4 text-[#0b2945] dark:text-blue-400" />
                       Question Navigator
                     </div>
-                    <span className="font-mono text-xs font-bold text-slate-500">
+                    <span className="font-mono text-xs font-bold text-slate-500 dark:text-[#A1A1AA]">
                       {currentIndex + 1} / {questions.length} Active
                     </span>
                   </div>
@@ -608,17 +608,17 @@ export default function AIQuizPage({ params }: PageProps) {
                           onClick={() => setCurrentIndex(idx)}
                           className={`relative flex h-11 items-center justify-center rounded-xl font-bold text-xs transition-all ${
                             isCurrent
-                              ? "bg-[#0b2945] text-white shadow-xs ring-2 ring-blue-300"
+                              ? "bg-[#0b2945] dark:bg-blue-600 text-white shadow-xs ring-2 ring-blue-300 dark:ring-blue-700"
                               : isAnswered
-                              ? "bg-blue-50 text-blue-900 border border-blue-200 font-extrabold"
-                              : "bg-slate-100/70 text-slate-600 hover:bg-slate-200/70"
+                              ? "bg-blue-50 dark:bg-blue-950/50 text-blue-900 dark:text-blue-200 border border-blue-200 dark:border-blue-900/60 font-extrabold"
+                              : "bg-slate-100/70 dark:bg-[#1D1D20] text-slate-600 dark:text-[#A1A1AA] hover:bg-slate-200/70 dark:hover:bg-[#2A2A2E]"
                           }`}
                         >
                           {String(idx + 1).padStart(2, "0")}
 
                           {/* Flag Indicator Dot */}
                           {isFlagged && (
-                            <span className="absolute -top-1 -right-1 h-2.5 w-2.5 rounded-full bg-purple-500 ring-2 ring-white" />
+                            <span className="absolute -top-1 -right-1 h-2.5 w-2.5 rounded-full bg-purple-500 ring-2 ring-white dark:ring-[#171719]" />
                           )}
                         </button>
                       );
@@ -626,13 +626,13 @@ export default function AIQuizPage({ params }: PageProps) {
                   </div>
 
                   {/* Legend */}
-                  <div className="flex items-center justify-between border-t border-slate-100 pt-3 text-[11px] text-slate-500 font-medium">
+                  <div className="flex items-center justify-between border-t border-slate-100 dark:border-[#2A2A2E] pt-3 text-[11px] text-slate-500 dark:text-[#A1A1AA] font-medium">
                     <div className="flex items-center gap-1.5">
-                      <span className="h-2.5 w-2.5 rounded bg-[#0b2945]" />
+                      <span className="h-2.5 w-2.5 rounded bg-[#0b2945] dark:bg-blue-600" />
                       <span>Answered ({answeredCount})</span>
                     </div>
                     <div className="flex items-center gap-1.5">
-                      <span className="h-2.5 w-2.5 rounded bg-slate-200" />
+                      <span className="h-2.5 w-2.5 rounded bg-slate-200 dark:bg-[#2A2A2E]" />
                       <span>Unattempted ({remainingCount})</span>
                     </div>
                     <div className="flex items-center gap-1.5">
@@ -643,18 +643,18 @@ export default function AIQuizPage({ params }: PageProps) {
                 </div>
 
                 {/* CARD 2: Cadre Evaluation Directives */}
-                <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-xs space-y-4">
-                  <div className="flex items-center gap-2 text-xs font-bold text-[#0f1f35] border-b border-slate-100 pb-3">
-                    <FileCheck2 className="h-4 w-4 text-[#0b2945]" />
+                <div className="rounded-2xl border border-slate-200 dark:border-[#2A2A2E] bg-white dark:bg-[#171719] p-6 shadow-xs space-y-4">
+                  <div className="flex items-center gap-2 text-xs font-bold text-[#0f1f35] dark:text-[#F5F5F5] border-b border-slate-100 dark:border-[#2A2A2E] pb-3">
+                    <FileCheck2 className="h-4 w-4 text-[#0b2945] dark:text-blue-400" />
                     Cadre Evaluation Directives
                   </div>
 
-                  <div className="space-y-3 text-xs leading-relaxed text-slate-600">
+                  <div className="space-y-3 text-xs leading-relaxed text-slate-600 dark:text-[#A1A1AA]">
                     <div className="flex items-start gap-2.5">
-                      <CheckCircle2 className="h-4 w-4 text-blue-600 shrink-0 mt-0.5" />
+                      <CheckCircle2 className="h-4 w-4 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
                       <div>
                         Each correct answer directly addresses the{" "}
-                        <strong className="text-red-700">
+                        <strong className="text-red-700 dark:text-red-400">
                           {currentDeficit}% {compDef?.name || "Statistical Methods"}
                         </strong>{" "}
                         competency gap mapped to your profile.
@@ -662,41 +662,41 @@ export default function AIQuizPage({ params }: PageProps) {
                     </div>
 
                     <div className="flex items-start gap-2.5">
-                      <CheckCircle2 className="h-4 w-4 text-blue-600 shrink-0 mt-0.5" />
+                      <CheckCircle2 className="h-4 w-4 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
                       <div>
-                        Negative marking: <strong className="text-slate-800">None</strong> for Cadre Diagnostic Series.
+                        Negative marking: <strong className="text-slate-800 dark:text-[#F5F5F5]">None</strong> for Cadre Diagnostic Series.
                       </div>
                     </div>
 
                     <div className="flex items-start gap-2.5">
-                      <CheckCircle2 className="h-4 w-4 text-blue-600 shrink-0 mt-0.5" />
+                      <CheckCircle2 className="h-4 w-4 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
                       <div>
                         Benchmark for APAR Endorsement:{" "}
-                        <strong className="text-slate-800">70% (7/10 questions)</strong> minimum required.
+                        <strong className="text-slate-800 dark:text-[#F5F5F5]">70% (7/10 questions)</strong> minimum required.
                       </div>
                     </div>
                   </div>
                 </div>
 
                 {/* CARD 3: AI Proctoring & Security */}
-                <div className="rounded-2xl border border-blue-200 bg-blue-50/50 p-5 space-y-3">
+                <div className="rounded-2xl border border-blue-200 dark:border-[#2A2A2E] bg-blue-50/50 dark:bg-[#171719] p-5 space-y-3">
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2 text-xs font-bold text-blue-950">
-                      <Lock className="h-4 w-4 text-[#0b2945]" />
+                    <div className="flex items-center gap-2 text-xs font-bold text-blue-950 dark:text-blue-200">
+                      <Lock className="h-4 w-4 text-[#0b2945] dark:text-blue-400" />
                       AI Proctoring &amp; Security
                     </div>
                     <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
                   </div>
 
-                  <div className="space-y-1.5 text-xs text-blue-900/80">
+                  <div className="space-y-1.5 text-xs text-blue-900/80 dark:text-[#A1A1AA]">
                     <div className="flex items-center gap-1.5 font-semibold">
-                      <Eye className="h-3.5 w-3.5 text-blue-700" />
+                      <Eye className="h-3.5 w-3.5 text-blue-700 dark:text-blue-400" />
                       Browser Window Focus Secured
                     </div>
-                    <div className="font-mono text-[11px] text-blue-800">
+                    <div className="font-mono text-[11px] text-blue-800 dark:text-blue-300">
                       IP: 14.139.224.*** • Hash: e6a48f...b92 • Verified NIC Gate
                     </div>
-                    <p className="text-[11px] text-slate-500 pt-1 leading-snug">
+                    <p className="text-[11px] text-slate-500 dark:text-[#71717A] pt-1 leading-snug">
                       Automated integrity check verifies candidate environmental presence through the iGOT Karmayogi engine.
                     </p>
                   </div>

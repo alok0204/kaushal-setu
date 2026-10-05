@@ -44,22 +44,22 @@ export function AppSidebar({ className, onResetData }: AppSidebarProps) {
   return (
     <aside
       className={cn(
-        "flex w-64 flex-col justify-between border-r border-slate-200 bg-white text-[#0f1f35]",
+        "flex w-64 flex-col justify-between border-r border-slate-200 bg-white text-[#0f1f35] dark:border-[#2A2A2E] dark:bg-[#111113] dark:text-[#F5F5F5] transition-colors duration-150",
         className
       )}
       suppressHydrationWarning
     >
       <div>
         {/* Brand / Logo */}
-        <div className="flex items-center gap-3 border-b border-slate-100 px-6 py-5">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#0b2945] font-bold text-white shadow-sm">
+        <div className="flex items-center gap-3 border-b border-slate-100 px-6 py-5 dark:border-[#2A2A2E]">
+          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#0b2945] font-bold text-white shadow-sm dark:bg-blue-600">
             KS
           </div>
           <div>
-            <div className="flex items-center gap-1.5 font-bold tracking-tight text-[#0f1f35] text-base">
+            <div className="flex items-center gap-1.5 font-bold tracking-tight text-[#0f1f35] text-base dark:text-[#F5F5F5]">
               iGOT AI
             </div>
-            <div className="text-[11px] text-slate-500 font-medium tracking-tight">
+            <div className="text-[11px] text-slate-500 font-medium tracking-tight dark:text-[#A1A1AA]">
               Karmayogi Learning Intelligence
             </div>
           </div>
@@ -67,7 +67,7 @@ export function AppSidebar({ className, onResetData }: AppSidebarProps) {
 
         {/* Section: STATISTICAL CADRE CORE */}
         <div className="px-4 py-6">
-          <div className="px-3 text-[11px] font-bold tracking-wider text-slate-400 uppercase">
+          <div className="px-3 text-[11px] font-bold tracking-wider text-slate-400 dark:text-[#71717A] uppercase">
             Statistical Cadre Core
           </div>
           <nav className="mt-3 space-y-1">
@@ -88,14 +88,14 @@ export function AppSidebar({ className, onResetData }: AppSidebarProps) {
                   className={cn(
                     "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-semibold transition-colors",
                     isActive
-                      ? "bg-[#0b2945] text-white shadow-sm"
-                      : "text-slate-600 hover:bg-slate-100/80 hover:text-[#0f1f35]"
+                      ? "bg-[#0b2945] text-white shadow-sm dark:bg-blue-600 dark:text-white"
+                      : "text-slate-600 hover:bg-slate-100/80 hover:text-[#0f1f35] dark:text-[#A1A1AA] dark:hover:bg-[#171719] dark:hover:text-[#F5F5F5]"
                   )}
                 >
                   <Icon
                     className={cn(
                       "h-4 w-4",
-                      isActive ? "text-white" : "text-slate-500"
+                      isActive ? "text-white" : "text-slate-500 dark:text-[#71717A]"
                     )}
                   />
                   {item.name}
@@ -107,33 +107,33 @@ export function AppSidebar({ className, onResetData }: AppSidebarProps) {
       </div>
 
       {/* Footer / Account & Governance */}
-      <div className="border-t border-slate-100 p-4 space-y-2.5">
-        <div className="px-2 text-[11px] font-bold tracking-wider text-slate-400 uppercase">
+      <div className="border-t border-slate-100 p-4 space-y-2.5 dark:border-[#2A2A2E]">
+        <div className="px-2 text-[11px] font-bold tracking-wider text-slate-400 dark:text-[#71717A] uppercase">
           Account &amp; Governance
         </div>
 
         <Link
           href="/"
-          className="flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-100 hover:text-[#0f1f35] transition-colors"
+          className="flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-100 hover:text-[#0f1f35] dark:text-[#A1A1AA] dark:hover:bg-[#171719] dark:hover:text-[#F5F5F5] transition-colors"
         >
-          <UserCheck className="h-4 w-4 text-slate-500" />
+          <UserCheck className="h-4 w-4 text-slate-500 dark:text-[#71717A]" />
           Switch User / Sign Out
         </Link>
 
         <button
           onClick={handleReset}
-          className="flex w-full items-center gap-2.5 rounded-lg px-2.5 py-2 text-xs font-semibold text-amber-700 hover:bg-amber-50 hover:text-amber-800 transition-colors"
+          className="flex w-full items-center gap-2.5 rounded-lg px-2.5 py-2 text-xs font-semibold text-amber-700 hover:bg-amber-50 hover:text-amber-800 dark:text-amber-400 dark:hover:bg-amber-950/30 dark:hover:text-amber-300 transition-colors"
         >
-          <RotateCcw className="h-3.5 w-3.5 text-amber-600" />
+          <RotateCcw className="h-3.5 w-3.5 text-amber-600 dark:text-amber-400" />
           Reset Demo to 0% State
         </button>
 
-        <div className="flex items-center justify-between pt-2 text-[11px] text-slate-500 border-t border-slate-100 px-2">
+        <div className="flex items-center justify-between pt-2 text-[11px] text-slate-500 border-t border-slate-100 px-2 dark:border-[#2A2A2E] dark:text-[#A1A1AA]">
           <span className="flex items-center gap-1 font-medium">
-            <ShieldCheck className="h-3 w-3 text-emerald-600" />
+            <ShieldCheck className="h-3 w-3 text-emerald-600 dark:text-emerald-400" />
             Govt. of India • MoSPI
           </span>
-          <span className="font-mono text-[10px] text-slate-400">v3.2</span>
+          <span className="font-mono text-[10px] text-slate-400 dark:text-[#71717A]">v3.2</span>
         </div>
       </div>
     </aside>
