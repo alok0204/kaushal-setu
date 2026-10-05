@@ -27,14 +27,44 @@ export const metadata: Metadata = {
   ],
 };
 
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full">
-      <body className={`${geistSans.variable} ${geistMono.variable} min-h-full flex flex-col bg-[#f8fafd] text-[#0f1f35] font-sans antialiased`}>
+    <html lang="en" className="h-full" suppressHydrationWarning>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} min-h-full flex flex-col bg-[#f8fafd] text-[#0f1f35] font-sans antialiased`}
+        suppressHydrationWarning
+      >
+        <script
+          async
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                function fixDefiner() {
+                  try {
+                    var el = document.getElementById('definer-bubble-host');
+                    if (el && el.parentElement === document.body && document.body.lastElementChild !== el) {
+                      document.body.appendChild(el);
+                    }
+                  } catch (e) {}
+                }
+                fixDefiner();
+                if (typeof MutationObserver !== 'undefined') {
+                  var obs = new MutationObserver(fixDefiner);
+                  obs.observe(document.documentElement, { childList: true, subtree: true });
+                  if (typeof window !== 'undefined') {
+                    window.addEventListener('DOMContentLoaded', fixDefiner);
+                    setTimeout(function() { obs.disconnect(); }, 5000);
+                  }
+                }
+              })();
+            `,
+          }}
+        />
         {children}
       </body>
     </html>

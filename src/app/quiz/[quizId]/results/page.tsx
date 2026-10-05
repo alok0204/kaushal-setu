@@ -25,6 +25,7 @@ import {
   GeneratedQuiz,
 } from "@/types";
 import { COMPETENCIES, TARGET_BENCHMARK } from "@/lib/constants";
+import { formatDeterministicDate } from "@/lib/utils";
 import {
   getUserState,
   getQuizAttemptById,
@@ -128,7 +129,7 @@ export default function AssessmentResultsPage({ params }: PageProps) {
         };
 
         return (
-          <div className="space-y-6 text-[#0f1f35]">
+          <div className="space-y-6 text-[#0f1f35]" suppressHydrationWarning>
             {/* Breadcrumb & Top Bar */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 pb-5">
               <div>
@@ -620,11 +621,7 @@ export default function AssessmentResultsPage({ params }: PageProps) {
                       </div>
                     </div>
                     <div className="text-right text-[10px] font-medium text-slate-500">
-                      {new Date(attempt.completedAt).toLocaleDateString("en-US", {
-                        month: "short",
-                        day: "numeric",
-                        year: "numeric",
-                      })}
+                      {formatDeterministicDate(attempt.completedAt)}
                     </div>
                   </div>
                 </div>

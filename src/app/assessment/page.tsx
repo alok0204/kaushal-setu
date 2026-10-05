@@ -79,7 +79,7 @@ export default function AssessmentPage() {
 
         if (completedResult) {
           return (
-            <div className="max-w-2xl mx-auto space-y-6 text-center py-8 text-[#0f1f35]">
+            <div className="max-w-2xl mx-auto space-y-6 text-center py-8 text-[#0f1f35]" suppressHydrationWarning>
               <div className="rounded-2xl border border-emerald-200 bg-white p-8 shadow-xs space-y-6">
                 <div className="flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 text-emerald-700 mx-auto">
                   <CheckCircle2 className="h-10 w-10" />
@@ -146,7 +146,7 @@ export default function AssessmentPage() {
         const compDef = COMPETENCIES.find((c) => c.id === currentQ.competencyId);
 
         return (
-          <div className="max-w-3xl mx-auto space-y-6 text-[#0f1f35]">
+          <div className="max-w-3xl mx-auto space-y-6 text-[#0f1f35]" suppressHydrationWarning>
             {/* Header */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 pb-4">
               <div>

@@ -159,7 +159,7 @@ export default function LearningPage() {
         };
 
         return (
-          <div className="space-y-8 text-[#0f1f35]">
+          <div className="space-y-8 text-[#0f1f35]" suppressHydrationWarning>
             {/* Top Breadcrumb & Header */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>

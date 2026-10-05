@@ -97,36 +97,43 @@ export function resetUserState(userId: string): void {
   window.dispatchEvent(new Event("kaushal_setu_state_updated"));
 }
 
+export function getInitialDashboardData(userId: string = DEMO_USERS[0].id): UserDashboardData {
+  const user = DEMO_USERS.find((u) => u.id === userId) || DEMO_USERS[0];
+  const zeroCompetencies: UserCompetencyRecord[] = COMPETENCIES.map((c) => ({
+    competencyId: c.id,
+    score: 0,
+    targetScore: TARGET_BENCHMARK,
+    gap: TARGET_BENCHMARK,
+    status: "Needs Improvement",
+  }));
+
+  return {
+    user,
+    overallCompetency: 0,
+    assessmentsCount: 0,
+    learningProgressPercent: 0,
+    completedModulesCount: 0,
+    totalModulesCount: 10,
+    quizzesCount: 0,
+    competencies: zeroCompetencies,
+    priorityGap: null,
+    gapsCount: 0,
+    recentAssessment: null,
+    recentQuizAttempt: null,
+    recommendedResources: IGOT_RESOURCES.slice(0, 3),
+    isEstablished: false,
+    uploadedMaterials: [],
+    quizHistory: [],
+  };
+}
+
 export function getDashboardData(userId: string): UserDashboardData {
   const user = DEMO_USERS.find((u) => u.id === userId) || DEMO_USERS[0];
   const state = getUserState(userId);
 
   // If not established yet (zero state)
   if (!state.isEstablished || state.assessments.length === 0) {
-    const zeroCompetencies: UserCompetencyRecord[] = COMPETENCIES.map((c) => ({
-      competencyId: c.id,
-      score: 0,
-      targetScore: TARGET_BENCHMARK,
-      gap: TARGET_BENCHMARK,
-      status: "Needs Improvement",
-    }));
-
-    return {
-      user,
-      overallCompetency: 0,
-      assessmentsCount: 0,
-      learningProgressPercent: 0,
-      completedModulesCount: 0,
-      totalModulesCount: 10,
-      quizzesCount: 0,
-      competencies: zeroCompetencies,
-      priorityGap: null,
-      gapsCount: 0,
-      recentAssessment: null,
-      recentQuizAttempt: null,
-      recommendedResources: IGOT_RESOURCES.slice(0, 3),
-      isEstablished: false,
-    };
+    return getInitialDashboardData(userId);
   }
 
   // Calculate dynamic competency records

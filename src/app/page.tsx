@@ -40,7 +40,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f8fafd] flex items-center justify-center p-4 sm:p-6 lg:p-12 text-[#0f1f35]">
+    <div className="min-h-screen bg-[#f8fafd] flex items-center justify-center p-4 sm:p-6 lg:p-12 text-[#0f1f35]" suppressHydrationWarning>
       <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
         {/* Left Side: National Statistical Governance Branding */}
         <div className="lg:col-span-6 space-y-6 lg:pr-4">

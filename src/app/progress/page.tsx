@@ -20,6 +20,7 @@ import { AppShell } from "@/components/layout/AppShell";
 import { UserDashboardData } from "@/types";
 import { COMPETENCIES, TARGET_BENCHMARK, IGOT_RESOURCES } from "@/lib/constants";
 import { getUserState } from "@/lib/store";
+import { formatDeterministicDate } from "@/lib/utils";
 
 export default function ProgressPage() {
   const [isSyncing, setIsSyncing] = useState(false);
@@ -94,7 +95,7 @@ export default function ProgressPage() {
             : user.fullName.slice(0, 2).toUpperCase();
 
         return (
-          <div className="space-y-6 text-[#0f1f35]">
+          <div className="space-y-6 text-[#0f1f35]" suppressHydrationWarning>
             {/* Breadcrumb & Header Action */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-5">
               <div>
@@ -613,12 +614,7 @@ export default function ProgressPage() {
                             {att.quizTitle}
                           </div>
                           <div className="text-[10px] text-slate-500">
-                            Conducted{" "}
-                            {new Date(att.completedAt).toLocaleDateString("en-US", {
-                              month: "short",
-                              day: "numeric",
-                              year: "numeric",
-                            })}
+                            Conducted {formatDeterministicDate(att.completedAt)}
                           </div>
                         </div>
 

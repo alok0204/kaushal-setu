@@ -357,7 +357,7 @@ export default function AIQuizPage({ params }: PageProps) {
         };
 
         return (
-          <div className="space-y-6 text-[#0f1f35]">
+          <div className="space-y-6 text-[#0f1f35]" suppressHydrationWarning>
             {/* Top Official Assessment Header */}
             <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
               <div>

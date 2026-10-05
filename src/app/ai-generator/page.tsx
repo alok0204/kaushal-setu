@@ -167,18 +167,8 @@ export default function AIGeneratorPage() {
           : "statistical_methods";
         const compDef = COMPETENCIES.find((c) => c.id === targetCompId);
 
-        // Resolve active quiz if not just generated
-        const userState = getUserState(user.id);
-        const activeQuiz =
-          generatedQuiz ||
-          (userState.quizzes && userState.quizzes.length > 0
-            ? userState.quizzes[userState.quizzes.length - 1]
-            : null);
-
-        const currentQuizId = activeQuiz ? activeQuiz.id : "std-eval";
-
         return (
-          <div className="space-y-6 text-[#0f1f35]">
+          <div className="space-y-6 text-[#0f1f35]" suppressHydrationWarning>
             {/* Breadcrumb & Top Bar */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-5">
               <div>
@@ -644,7 +634,15 @@ export default function AIGeneratorPage() {
                   {/* Big Action Button */}
                   <button
                     type="button"
-                    onClick={() => router.push(`/quiz/${currentQuizId}`)}
+                    onClick={() => {
+                      const userState = getUserState(user.id);
+                      const qId =
+                        generatedQuiz?.id ||
+                        (userState.quizzes && userState.quizzes.length > 0
+                          ? userState.quizzes[userState.quizzes.length - 1].id
+                          : "std-eval");
+                      router.push(`/quiz/${qId}`);
+                    }}
                     className="w-full flex items-center justify-center gap-2 rounded-xl bg-[#0b2945] py-3.5 text-xs font-bold text-white shadow-xs hover:bg-[#081f35] transition-colors"
                   >
                     Start Assessment Now <ArrowRight className="h-4 w-4" />

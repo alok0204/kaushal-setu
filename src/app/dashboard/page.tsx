@@ -47,7 +47,7 @@ export default function DashboardPage() {
         const weakestCompDef = COMPETENCIES.find((c) => c.id === weakestComp?.competencyId);
 
         return (
-          <div className="space-y-8 text-[#0f1f35]">
+          <div className="space-y-8 text-[#0f1f35]" suppressHydrationWarning>
             {/* Top Directorate Banner */}
             <div>
               <div className="flex flex-wrap items-center justify-between gap-4">

@@ -19,6 +19,7 @@ import {
 import { AppShell } from "@/components/layout/AppShell";
 import { UserDashboardData, CompetencyId } from "@/types";
 import { COMPETENCIES, TARGET_BENCHMARK } from "@/lib/constants";
+import { formatDeterministicDate } from "@/lib/utils";
 
 export default function CompetencyPage() {
   const [filter, setFilter] = useState<"all" | "strengths" | "developing" | "gaps">("all");
@@ -66,7 +67,7 @@ export default function CompetencyPage() {
         const priorityDef = COMPETENCIES.find((c) => c.id === priorityGap?.competencyId);
 
         return (
-          <div className="space-y-8 text-[#0f1f35]">
+          <div className="space-y-8 text-[#0f1f35]" suppressHydrationWarning>
             {/* Top Header & Breadcrumb */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
@@ -475,7 +476,7 @@ export default function CompetencyPage() {
                   </p>
                   <div className="mt-3 text-[10px] text-slate-400">
                     {recentAssessment
-                      ? new Date(recentAssessment.completedAt).toLocaleDateString()
+                      ? formatDeterministicDate(recentAssessment.completedAt)
                       : "Not completed"}
                   </div>
                 </div>
@@ -515,7 +516,7 @@ export default function CompetencyPage() {
                   </p>
                   <div className="mt-3 text-[10px] text-slate-400">
                     {recentQuizAttempt
-                      ? new Date(recentQuizAttempt.completedAt).toLocaleDateString()
+                      ? formatDeterministicDate(recentQuizAttempt.completedAt)
                       : "Awaiting Quiz Attempt"}
                   </div>
                 </div>

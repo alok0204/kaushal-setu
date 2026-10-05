@@ -47,6 +47,7 @@ export function AppSidebar({ className, onResetData }: AppSidebarProps) {
         "flex w-64 flex-col justify-between border-r border-slate-200 bg-white text-[#0f1f35]",
         className
       )}
+      suppressHydrationWarning
     >
       <div>
         {/* Brand / Logo */}
@@ -71,13 +72,14 @@ export function AppSidebar({ className, onResetData }: AppSidebarProps) {
           </div>
           <nav className="mt-3 space-y-1">
             {navItems.map((item) => {
+              const currentPath = pathname || "";
               const isActive =
                 item.href === "/assessment"
-                  ? pathname.startsWith("/assessment") ||
-                    pathname.startsWith("/ai-generator") ||
-                    pathname.startsWith("/quiz")
-                  : pathname === item.href ||
-                    (item.href !== "/" && pathname.startsWith(item.href));
+                  ? currentPath.startsWith("/assessment") ||
+                    currentPath.startsWith("/ai-generator") ||
+                    currentPath.startsWith("/quiz")
+                  : currentPath === item.href ||
+                    (item.href !== "/" && currentPath.startsWith(item.href));
               const Icon = item.icon;
               return (
                 <Link
