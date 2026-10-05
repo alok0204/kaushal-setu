@@ -1,91 +1,132 @@
-/**
- * Kaushal Setu Domain Types
- * Modular type definitions for statistical competency, learning, and assessment.
- */
-
-export type UserRole = "officer" | "state_nodal_officer" | "administrator" | "reviewer";
-
-export interface UserProfile {
+export interface DemoUser {
   id: string;
-  fullName: string;
   email: string;
-  role: UserRole;
-  cadre: string; // e.g., "Indian Statistical Service (ISS)", "Subordinate Statistical Service (SSS)", "State DES"
+  fullName: string;
+  cadreId: string;
+  role: string;
+  stateCode: string;
+  stateName: string;
   department: string;
-  designation: string;
-  stateUtCode?: string;
-  createdAt: string;
+}
+
+export type CompetencyId =
+  | "data_analysis"
+  | "statistical_methods"
+  | "data_visualization"
+  | "statistical_computing"
+  | "ai_digital_skills";
+
+export interface CompetencyDefinition {
+  id: CompetencyId;
+  name: string;
+  domain: string;
+  mandate: string;
+  targetScore: number; // default 70
+  description: string;
+}
+
+export type CompetencyStatus =
+  | "Needs Improvement"
+  | "High Priority Gap"
+  | "Developing"
+  | "Proficient"
+  | "Strong";
+
+export interface UserCompetencyRecord {
+  competencyId: CompetencyId;
+  score: number; // 0 - 100
+  targetScore: number; // 70
+  gap: number; // targetScore - score (positive means deficit)
+  status: CompetencyStatus;
+  assessedAt?: string;
+  history?: { score: number; date: string; source: string }[];
+}
+
+export interface AssessmentQuestion {
+  id: string;
+  competencyId: CompetencyId;
+  question: string;
+  options: string[];
+  correctAnswer: number; // 0-indexed
+  explanation: string;
+}
+
+export interface AssessmentSubmission {
+  id: string;
+  userId: string;
+  type: "initial" | "reassessment";
+  overallScore: number;
+  completedAt: string;
+  competencyScores: Record<CompetencyId, number>;
+  answers: { questionId: string; selectedAnswer: number; isCorrect: boolean }[];
+}
+
+export interface IGOTResourceItem {
+  id: string;
+  title: string;
+  competencyId: CompetencyId;
+  difficulty: "Beginner" | "Intermediate" | "Advanced";
+  durationHours: number;
+  igotUrl: string;
+  description: string;
+  provider: string;
+  courseCode: string;
+  curatedTag?: string;
+}
+
+export interface LearningProgressItem {
+  resourceId: string;
+  status: "not_started" | "in_progress" | "completed";
+  progressPercent: number; // 0 to 100
   updatedAt: string;
 }
 
-export interface StateUTInfo {
-  code: string;
-  name: string;
-  type: "state" | "union_territory";
-  nodalDepartment: string; // e.g., "Directorate of Economics & Statistics"
-}
-
-export type CompetencyDomain =
-  | "Statistical Methodology & Survey Design"
-  | "National Accounts & Economic Statistics"
-  | "Data Analytics, AI & Visualization"
-  | "Official Data Dissemination & Governance"
-  | "Field Operations & Data Collection";
-
-export type ProficiencyLevel = 1 | 2 | 3 | 4 | 5; // Basic to Expert
-
-export interface Competency {
+export interface QuizQuestionItem {
   id: string;
-  code: string;
-  title: string;
-  domain: CompetencyDomain;
-  description: string;
-  requiredLevel: ProficiencyLevel;
+  question: string;
+  options: string[];
+  correctAnswer: number;
+  explanation: string;
+  competencyId: CompetencyId;
+  difficulty: string;
 }
 
-export interface CompetencyAssessment {
-  competencyId: string;
-  currentLevel: ProficiencyLevel;
-  targetLevel: ProficiencyLevel;
-  gap: number;
-  lastAssessedAt: string;
-}
-
-export interface IGOTResource {
-  id: string;
-  courseId: string;
-  title: string;
-  provider: string;
-  durationMinutes: number;
-  url: string;
-  alignedCompetencies: string[];
-}
-
-export interface LearningPath {
+export interface GeneratedQuiz {
   id: string;
   userId: string;
   title: string;
-  targetCompetencyId: string;
-  recommendedResources: IGOTResource[];
-  progressPercent: number;
-  status: "not_started" | "in_progress" | "completed";
+  materialFilename: string;
+  createdAt: string;
+  targetCompetencyId: CompetencyId;
+  questions: QuizQuestionItem[];
 }
 
-export interface QuizQuestion {
-  id: string;
-  prompt: string;
-  options: string[];
-  correctOptionIndex: number;
-  explanation: string;
-  relatedCompetencyId: string;
-}
-
-export interface QuizResult {
+export interface QuizAttempt {
   id: string;
   quizId: string;
   userId: string;
-  score: number;
+  quizTitle: string;
+  score: number; // 0 - 100
   totalQuestions: number;
+  correctCount: number;
   completedAt: string;
-  recommendedRevisionTopics: string[];
+  competencyId: CompetencyId;
+  answers: { questionId: string; selectedAnswer: number; isCorrect: boolean }[];
+}
+
+export interface UserDashboardData {
+  user: DemoUser;
+  overallCompetency: number; // 0 if new user
+  assessmentsCount: number;
+  learningProgressPercent: number;
+  completedModulesCount: number;
+  totalModulesCount: number;
+  quizzesCount: number;
+  competencies: UserCompetencyRecord[];
+  priorityGap: UserCompetencyRecord | null;
+  gapsCount: number;
+  recentAssessment: AssessmentSubmission | null;
+  recentQuizAttempt: QuizAttempt | null;
+  recommendedResources: IGOTResourceItem[];
+  isEstablished: boolean; // false if 0 assessments
 }

@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,15 +13,16 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Kaushal Setu | Official Statistical System Competency Platform",
+  title: "Kaushal Setu | iGOT AI Learning Platform for Official Statistics",
   description:
-    "AI-powered competency and personalized learning platform for India's Official Statistical System, integrated with the iGOT Karmayogi ecosystem.",
+    "AI-powered competency and personalized learning platform for India's Official Statistical System (MoSPI & State DES), integrated with the iGOT Karmayogi ecosystem.",
   keywords: [
     "Kaushal Setu",
+    "iGOT Karmayogi",
     "Official Statistical System",
     "MoSPI",
-    "iGOT Karmayogi",
-    "Competency Tracking",
+    "DES",
+    "Competency Analysis",
     "Personalized Learning",
   ],
 };
@@ -38,10 +37,8 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 font-sans">
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
+      <body className="min-h-full flex flex-col bg-[#f8fafc] text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 font-sans">
+        {children}
       </body>
     </html>
   );
