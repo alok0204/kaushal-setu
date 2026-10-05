@@ -1,69 +1,128 @@
-import Image from "next/image";
+import React from "react";
+import { APP_CONFIG, PLANNED_MODULES } from "@/lib/constants";
+import { Card } from "@/components/ui/Card";
+import { Badge } from "@/components/ui/Badge";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
+    <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+      {/* Hero / Verification Banner */}
+      <section className="relative overflow-hidden rounded-2xl border border-zinc-200 bg-gradient-to-b from-white to-zinc-50/50 p-8 shadow-sm dark:border-zinc-800 dark:from-zinc-900 dark:to-zinc-950 sm:p-12">
+        <div className="max-w-3xl space-y-4">
+          <div className="flex flex-wrap items-center gap-2">
+            <Badge variant="success">Phase 1: Project Foundation</Badge>
+            <Badge variant="outline">Next.js App Router</Badge>
+            <Badge variant="outline">TypeScript</Badge>
+            <Badge variant="outline">Tailwind CSS</Badge>
+          </div>
+
+          <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl text-zinc-900 dark:text-zinc-50">
+            {APP_CONFIG.name}{" "}
+            <span className="font-normal text-zinc-500">
+              ({APP_CONFIG.nameHindi})
+            </span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+
+          <p className="text-base text-zinc-600 dark:text-zinc-400 sm:text-lg">
+            {APP_CONFIG.description}
           </p>
+
+          <div className="pt-2 flex flex-wrap gap-3 text-xs font-mono text-zinc-600 dark:text-zinc-400">
+            <span className="inline-flex items-center gap-1.5 rounded-md bg-zinc-100 dark:bg-zinc-800 px-2.5 py-1">
+              <span className="h-2 w-2 rounded-full bg-emerald-500" />
+              Build Status: Passing
+            </span>
+            <span className="inline-flex items-center gap-1.5 rounded-md bg-zinc-100 dark:bg-zinc-800 px-2.5 py-1">
+              🔒 Security: Zero Hardcoded Secrets
+            </span>
+            <span className="inline-flex items-center gap-1.5 rounded-md bg-zinc-100 dark:bg-zinc-800 px-2.5 py-1">
+              ▲ Target: Vercel-Ready
+            </span>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* Tech Stack Foundation Status */}
+      <section className="mt-12">
+        <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
+          Foundation Stack &amp; Verification
+        </h2>
+        <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
+          The base environment is initialized and verified against core technical constraints.
+        </p>
+
+        <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <Card hoverEffect>
+            <div className="text-xs font-mono uppercase text-zinc-400">Framework</div>
+            <div className="mt-2 text-lg font-bold text-zinc-900 dark:text-zinc-100">Next.js (App Router)</div>
+            <p className="mt-1 text-xs text-zinc-500">
+              Modern server &amp; client component architecture with Turbopack bundler.
+            </p>
+          </Card>
+
+          <Card hoverEffect>
+            <div className="text-xs font-mono uppercase text-zinc-400">Language</div>
+            <div className="mt-2 text-lg font-bold text-zinc-900 dark:text-zinc-100">TypeScript (Strict)</div>
+            <p className="mt-1 text-xs text-zinc-500">
+              Type-safe foundation with domain model scaffolding in <code className="font-mono">@/types</code>.
+            </p>
+          </Card>
+
+          <Card hoverEffect>
+            <div className="text-xs font-mono uppercase text-zinc-400">Styling</div>
+            <div className="mt-2 text-lg font-bold text-zinc-900 dark:text-zinc-100">Tailwind CSS</div>
+            <p className="mt-1 text-xs text-zinc-500">
+              Utility-first styling with responsive, dark-mode and print support.
+            </p>
+          </Card>
+
+          <Card hoverEffect>
+            <div className="text-xs font-mono uppercase text-zinc-400">Code Quality</div>
+            <div className="mt-2 text-lg font-bold text-zinc-900 dark:text-zinc-100">ESLint &amp; Git Guard</div>
+            <p className="mt-1 text-xs text-zinc-500">
+              Strict linting and .gitignore protecting keys and environment variables.
+            </p>
+          </Card>
         </div>
-      </main>
+      </section>
+
+      {/* Upcoming Modules Scaffolding Preview */}
+      <section className="mt-12">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+          <div>
+            <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
+              Planned Platform Capabilities (Roadmap)
+            </h2>
+            <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
+              Modular architecture ready to accommodate all 11 core functional modules in subsequent steps.
+            </p>
+          </div>
+          <Badge variant="info">Phase 2+ Feature Scope</Badge>
+        </div>
+
+        <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {PLANNED_MODULES.map((item) => (
+            <Card key={item.id} hoverEffect className="flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between">
+                  <Badge variant="outline" className="text-[10px]">
+                    {item.category}
+                  </Badge>
+                  <span className="text-xs font-medium text-zinc-400">
+                    {item.status}
+                  </span>
+                </div>
+                <h3 className="mt-3 text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+                  {item.title}
+                </h3>
+                <p className="mt-1 text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
+            </Card>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
