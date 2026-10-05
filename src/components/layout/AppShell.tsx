@@ -31,7 +31,7 @@ export function AppShell({
   const dashboardData = getDashboardData(activeUserId);
 
   return (
-    <div className="flex min-h-screen bg-[#f8fafc] text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
+    <div className="flex min-h-screen bg-[#f8fafd] text-[#0f1f35]">
       <AppSidebar onResetData={() => window.location.reload()} />
       <div className="flex flex-1 flex-col overflow-x-hidden">
         <AppHeader

@@ -9,8 +9,8 @@ export function Card({ className, hoverEffect = false, children, ...props }: Car
   return (
     <div
       className={cn(
-        "rounded-xl border border-zinc-200/80 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900/60 backdrop-blur-sm",
-        hoverEffect && "transition-all duration-200 hover:shadow-md hover:border-zinc-300 dark:hover:border-zinc-700",
+        "rounded-xl border border-slate-200 bg-white p-6 shadow-xs",
+        hoverEffect && "transition-all duration-200 hover:border-slate-300 hover:shadow-sm",
         className
       )}
       {...props}

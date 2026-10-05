@@ -40,62 +40,62 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f3f5f8] flex items-center justify-center p-4 sm:p-6 lg:p-12">
-      <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+    <div className="min-h-screen bg-[#f8fafd] flex items-center justify-center p-4 sm:p-6 lg:p-12 text-[#0f1f35]">
+      <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
         {/* Left Side: National Statistical Governance Branding */}
-        <div className="lg:col-span-6 space-y-6 lg:pr-6">
-          <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50/80 px-3 py-1 text-xs font-semibold text-blue-800 dark:border-blue-900 dark:bg-blue-950/50 dark:text-blue-300">
-            <Building2 className="h-3.5 w-3.5" />
+        <div className="lg:col-span-6 space-y-6 lg:pr-4">
+          <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50/80 px-3 py-1 text-xs font-semibold text-blue-900">
+            <Building2 className="h-3.5 w-3.5 text-[#0b2945]" />
             NATIONAL STATISTICAL GOVERNANCE
           </div>
 
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-zinc-900 leading-tight">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#0f1f35] leading-tight">
             AI-Powered Learning for Better Competencies
           </h1>
 
-          <p className="text-base text-zinc-600 sm:text-lg leading-relaxed">
+          <p className="text-base text-slate-600 sm:text-lg leading-relaxed">
             Personalized learning and competency development for India&apos;s Official Statistical System.
           </p>
 
           {/* 3 Pillar Features */}
           <div className="space-y-4 pt-2">
             <div className="flex items-start gap-3.5">
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-100 text-blue-700 font-bold">
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-blue-800 border border-blue-100 font-bold">
                 <Award className="h-5 w-5" />
               </div>
               <div>
-                <h3 className="text-sm font-bold text-zinc-900">
+                <h3 className="text-sm font-bold text-[#0f1f35]">
                   Identify competency gaps with precision analytics
                 </h3>
-                <p className="text-xs text-zinc-500 mt-0.5">
+                <p className="text-xs text-slate-500 mt-0.5">
                   Diagnostic frameworks benchmarked against statutory statistical protocols.
                 </p>
               </div>
             </div>
 
             <div className="flex items-start gap-3.5">
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-emerald-100 text-emerald-700 font-bold">
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-100 font-bold">
                 <BookOpen className="h-5 w-5" />
               </div>
               <div>
-                <h3 className="text-sm font-bold text-zinc-900">
+                <h3 className="text-sm font-bold text-[#0f1f35]">
                   Discover personalized learning through iGOT Karmayogi integration
                 </h3>
-                <p className="text-xs text-zinc-500 mt-0.5">
+                <p className="text-xs text-slate-500 mt-0.5">
                   Curated pathways dynamically mapped to central civil service competencies.
                 </p>
               </div>
             </div>
 
             <div className="flex items-start gap-3.5">
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-purple-100 text-purple-700 font-bold">
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-indigo-50 text-indigo-800 border border-indigo-100 font-bold">
                 <BrainCircuit className="h-5 w-5" />
               </div>
               <div>
-                <h3 className="text-sm font-bold text-zinc-900">
+                <h3 className="text-sm font-bold text-[#0f1f35]">
                   Assess learning with AI-generated role-based evaluations
                 </h3>
-                <p className="text-xs text-zinc-500 mt-0.5">
+                <p className="text-xs text-slate-500 mt-0.5">
                   Continuous objective appraisal modeled on live field sampling and microdata standards.
                 </p>
               </div>
@@ -103,39 +103,39 @@ export default function LoginPage() {
           </div>
 
           {/* Continuous Competency Cycle Card */}
-          <div className="rounded-xl border border-zinc-200/90 bg-white/80 p-4 shadow-sm backdrop-blur">
-            <div className="flex items-center justify-between text-[11px] font-bold text-zinc-500 uppercase tracking-wider pb-2 border-b border-zinc-100">
+          <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-xs">
+            <div className="flex items-center justify-between text-[11px] font-bold text-slate-500 uppercase tracking-wider pb-2 border-b border-slate-100">
               <span>Continuous Competency Cycle</span>
-              <span className="text-blue-700">ISO 9001:2015 Aligned</span>
+              <span className="text-[#0b2945]">ISO 9001:2015 Aligned</span>
             </div>
             <div className="grid grid-cols-4 gap-2 pt-3 text-center">
-              <div className="rounded-lg bg-zinc-50 p-2 text-xs font-semibold text-zinc-800 border border-zinc-200/60">
+              <div className="rounded-lg bg-slate-50 p-2 text-xs font-semibold text-slate-800 border border-slate-200">
                 Assessment
               </div>
-              <div className="rounded-lg bg-zinc-50 p-2 text-xs font-semibold text-zinc-800 border border-zinc-200/60">
+              <div className="rounded-lg bg-slate-50 p-2 text-xs font-semibold text-slate-800 border border-slate-200">
                 Learning
               </div>
-              <div className="rounded-lg bg-zinc-50 p-2 text-xs font-semibold text-zinc-800 border border-zinc-200/60">
+              <div className="rounded-lg bg-slate-50 p-2 text-xs font-semibold text-slate-800 border border-slate-200">
                 Reassessment
               </div>
-              <div className="rounded-lg bg-blue-50 p-2 text-xs font-semibold text-blue-800 border border-blue-200">
+              <div className="rounded-lg bg-blue-50 p-2 text-xs font-semibold text-blue-900 border border-blue-200">
                 Improvement
               </div>
             </div>
           </div>
 
           {/* Bottom Trust Badges */}
-          <div className="flex flex-wrap items-center gap-6 pt-2 text-xs text-zinc-500">
+          <div className="flex flex-wrap items-center gap-6 pt-2 text-xs text-slate-500">
             <div className="flex items-center gap-1.5">
               <ShieldCheck className="h-4 w-4 text-emerald-600" />
               NIC Cert-In Compliant
             </div>
             <div className="flex items-center gap-1.5">
-              <Building2 className="h-4 w-4 text-blue-600" />
+              <Building2 className="h-4 w-4 text-[#0b2945]" />
               iGOT SPV Integrated
             </div>
             <div className="flex items-center gap-1.5">
-              <Server className="h-4 w-4 text-zinc-600" />
+              <Server className="h-4 w-4 text-slate-600" />
               Sovereign Data Center
             </div>
           </div>
@@ -143,23 +143,23 @@ export default function LoginPage() {
 
         {/* Right Side: Sign-In / Demo Personas Card */}
         <div className="lg:col-span-6">
-          <div className="rounded-2xl border border-zinc-200/80 bg-white p-6 sm:p-8 shadow-xl">
+          <div className="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 shadow-sm">
             <div className="space-y-1">
-              <h2 className="text-2xl font-bold tracking-tight text-zinc-900">
+              <h2 className="text-2xl font-bold tracking-tight text-[#0f1f35]">
                 Welcome back
               </h2>
-              <p className="text-xs text-zinc-500">
+              <p className="text-xs text-slate-500">
                 Sign in to continue your personalized learning journey.
               </p>
             </div>
 
             <form onSubmit={handleSignIn} className="mt-6 space-y-4">
               <div>
-                <label className="block text-xs font-medium text-zinc-700 mb-1.5">
+                <label className="block text-xs font-semibold text-slate-700 mb-1.5">
                   Official Email
                 </label>
                 <div className="relative">
-                  <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-zinc-400">
+                  <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
                     <Mail className="h-4 w-4" />
                   </div>
                   <input
@@ -167,26 +167,26 @@ export default function LoginPage() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    className="w-full rounded-lg border border-zinc-300 py-2.5 pl-10 pr-3 text-sm text-zinc-900 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                    className="w-full rounded-lg border border-slate-200 bg-white py-2.5 pl-10 pr-3 text-sm text-[#0f1f35] focus:border-[#0b2945] focus:outline-none focus:ring-1 focus:ring-[#0b2945]"
                   />
                 </div>
               </div>
 
               <div>
                 <div className="flex items-center justify-between mb-1.5">
-                  <label className="text-xs font-medium text-zinc-700">
+                  <label className="text-xs font-semibold text-slate-700">
                     Password
                   </label>
                   <button
                     type="button"
-                    onClick={() => alert("For demonstration purposes, choose a demo profile below.")}
-                    className="text-xs font-medium text-blue-600 hover:underline"
+                    onClick={() => alert("For demonstration purposes, click any demo persona below.")}
+                    className="text-xs font-semibold text-[#0b2945] hover:underline"
                   >
                     Forgot password?
                   </button>
                 </div>
                 <div className="relative">
-                  <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-zinc-400">
+                  <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
                     <Lock className="h-4 w-4" />
                   </div>
                   <input
@@ -194,12 +194,12 @@ export default function LoginPage() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
-                    className="w-full rounded-lg border border-zinc-300 py-2.5 pl-10 pr-10 text-sm text-zinc-900 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                    className="w-full rounded-lg border border-slate-200 bg-white py-2.5 pl-10 pr-10 text-sm text-[#0f1f35] focus:border-[#0b2945] focus:outline-none focus:ring-1 focus:ring-[#0b2945]"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute inset-y-0 right-0 flex items-center pr-3 text-zinc-400 hover:text-zinc-600"
+                    className="absolute inset-y-0 right-0 flex items-center pr-3 text-slate-400 hover:text-slate-600"
                   >
                     {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                   </button>
@@ -207,23 +207,23 @@ export default function LoginPage() {
               </div>
 
               <div className="flex items-center justify-between pt-1">
-                <label className="flex items-center gap-2 text-xs text-zinc-600 cursor-pointer">
+                <label className="flex items-center gap-2 text-xs text-slate-600 cursor-pointer">
                   <input
                     type="checkbox"
                     checked={rememberMe}
                     onChange={(e) => setRememberMe(e.target.checked)}
-                    className="rounded border-zinc-300 text-blue-600 focus:ring-blue-500 h-3.5 w-3.5"
+                    className="rounded border-slate-300 text-[#0b2945] focus:ring-[#0b2945] h-3.5 w-3.5"
                   />
                   Remember my credentials
                 </label>
-                <span className="flex items-center gap-1 text-[11px] text-zinc-400">
+                <span className="flex items-center gap-1 text-[11px] text-slate-400">
                   <Lock className="h-3 w-3" /> SSL 256-bit
                 </span>
               </div>
 
               <button
                 type="submit"
-                className="w-full flex items-center justify-center gap-2 rounded-xl bg-[#091524] py-3 text-sm font-semibold text-white shadow-md hover:bg-black transition-all"
+                className="w-full flex items-center justify-center gap-2 rounded-xl bg-[#0b2945] py-3 text-sm font-bold text-white shadow-sm hover:bg-[#081f35] transition-all"
               >
                 Sign In to Dashboard
                 <ArrowRight className="h-4 w-4" />
@@ -231,10 +231,10 @@ export default function LoginPage() {
             </form>
 
             {/* Persona Switcher Section */}
-            <div className="mt-6 border-t border-zinc-200/80 pt-5">
-              <div className="flex items-center justify-between text-xs font-bold text-zinc-500 uppercase tracking-wider mb-3">
+            <div className="mt-6 border-t border-slate-100 pt-5">
+              <div className="flex items-center justify-between text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">
                 <span>Or Explore Demonstration Profiles</span>
-                <span className="text-[10px] text-blue-600 font-medium lowercase">quick select</span>
+                <span className="text-[10px] text-[#0b2945] font-semibold lowercase">quick select</span>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -247,23 +247,23 @@ export default function LoginPage() {
                       onClick={() => handleSelectPersona(user)}
                       className={`flex items-center justify-between rounded-xl p-3 text-left transition-all border ${
                         isSelected
-                          ? "border-blue-600 bg-blue-50/70 shadow-sm"
-                          : "border-zinc-200 bg-zinc-50/50 hover:bg-zinc-100 hover:border-zinc-300"
+                          ? "border-[#0b2945] bg-blue-50/70 shadow-xs"
+                          : "border-slate-200 bg-white hover:bg-slate-50 hover:border-slate-300"
                       }`}
                     >
                       <div>
-                        <div className="text-xs font-bold text-zinc-900">
+                        <div className="text-xs font-bold text-[#0f1f35]">
                           {user.stateName}
                         </div>
-                        <div className="text-[11px] text-zinc-500">
+                        <div className="text-[11px] text-slate-500">
                           {user.role}
                         </div>
                       </div>
                       <div className="shrink-0 ml-2">
                         {isSelected ? (
-                          <CheckCircle2 className="h-4 w-4 text-blue-600" />
+                          <CheckCircle2 className="h-4 w-4 text-[#0b2945]" />
                         ) : (
-                          <div className="h-4 w-4 rounded-full border border-zinc-300" />
+                          <div className="h-4 w-4 rounded-full border border-slate-300" />
                         )}
                       </div>
                     </button>
@@ -273,12 +273,12 @@ export default function LoginPage() {
             </div>
 
             {/* Bottom National Programme Badge */}
-            <div className="mt-6 rounded-lg bg-blue-50/70 p-3 text-center border border-blue-100">
-              <p className="text-xs font-semibold text-blue-900 flex items-center justify-center gap-1.5">
-                <span className="h-2 w-2 rounded-full bg-blue-600 animate-pulse" />
+            <div className="mt-6 rounded-lg bg-blue-50/60 p-3 text-center border border-blue-100/80">
+              <p className="text-xs font-bold text-blue-950 flex items-center justify-center gap-1.5">
+                <span className="h-2 w-2 rounded-full bg-[#0b2945]" />
                 Powered by AI • Integrated with iGOT Karmayogi
               </p>
-              <p className="text-[10px] text-blue-700/80 mt-0.5">
+              <p className="text-[10px] text-blue-900/70 mt-0.5">
                 National Programme for Civil Services Capacity Building (NPCSCB)
               </p>
             </div>
